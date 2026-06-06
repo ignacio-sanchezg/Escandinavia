@@ -913,11 +913,11 @@ nav::-webkit-scrollbar { display: none; }
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <button class="nav-btn active" onclick="showSection('reservas')">📋 Reservas</button>
-    <button class="nav-btn" onclick="showSection('dias')">📅 Días</button>
-    <button class="nav-btn" onclick="showSection('pagos')">💳 Pagos</button>
-    <button class="nav-btn" onclick="showSection('pendientes')">✅ Pendientes</button>
-    <button class="nav-btn" onclick="showSection('guias')">📖 Guías</button>
+    <button class="nav-btn active" onclick="showSection('reservas',this)">📋 Reservas</button>
+    <button class="nav-btn" onclick="showSection('dias',this)">📅 Días</button>
+    <button class="nav-btn" onclick="showSection('pagos',this)">💳 Pagos</button>
+    <button class="nav-btn" onclick="showSection('pendientes',this)">✅ Pendientes</button>
+    <button class="nav-btn" onclick="showSection('guias',this)">📖 Guías</button>
   </div>
 </nav>
 
@@ -2119,11 +2119,11 @@ Thank you!</div>
 
 <script>
 // ——— NAVEGACIÓN ———
-function showSection(id) {
+function showSection(id, btn) {
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   document.getElementById('section-' + id).classList.add('active');
-  event.target.classList.add('active');
+  if (btn) btn.classList.add('active');
 }
 
 // ——— DÍAS ———
@@ -2275,31 +2275,26 @@ function ensureMap(d) {
   setTimeout(() => map.invalidateSize(), 50);
 }
 
-// Activar mapa y fotos cuando se muestra el día
-const _origShowDay = showDay;
+// ── Extender showDay para activar mapa y fotos ──────────────────────────────
+const _showDayOrig = showDay;
 window.showDay = function(n) {
-  _origShowDay(n);
+  _showDayOrig(n);
   const d = DAYS_DATA.find(x => x.day === n);
-  if (d) {
-    setTimeout(() => { ensureMap(d); loadPhotos(d); }, 80);
-  }
+  if (d) setTimeout(() => { ensureMap(d); loadPhotos(d); }, 80);
 };
 
-// Inicializar mapa del día activo cuando se abre la sección Días
-const _origShowSection = showSection;
-window.showSection = function(id) {
-  _origShowSection(id);
+// ── Extender showSection para inicializar mapa al abrir pestaña Días ────────
+const _showSectionOrig = showSection;
+window.showSection = function(id, btn) {
+  _showSectionOrig(id, btn);               // ← pasa btn, sin window.event
   if (id === 'dias') {
-    // Encontrar qué día está activo en este momento
-    const activeBtn = [...document.querySelectorAll('.day-btn')].findIndex(b => b.classList.contains('active'));
-    const dayNum = activeBtn >= 0 ? activeBtn + 1 : 1;
-    const d = DAYS_DATA.find(x => x.day === dayNum);
+    const activeDay = [...document.querySelectorAll('.day-btn')]
+      .findIndex(b => b.classList.contains('active'));
+    const n = activeDay >= 0 ? activeDay + 1 : 1;
+    const d = DAYS_DATA.find(x => x.day === n);
     if (d) setTimeout(() => { ensureMap(d); loadPhotos(d); }, 120);
   }
 };
-
-// NO inicializar en DOMContentLoaded porque la sección está oculta
-// Se inicializará la primera vez que el usuario abra la pestaña "Días"
 
 </script>
 
