@@ -580,6 +580,20 @@ nav::-webkit-scrollbar { display: none; }
   .section { padding: 28px 24px 60px; }
   .hero { padding: 60px 40px 52px; }
 }
+
+.map-link {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 8px;
+  font-size: 14px;
+  text-decoration: none;
+  color: var(--blue-light);
+  opacity: .7;
+  transition: opacity .15s;
+  vertical-align: middle;
+}
+.map-link:hover { opacity: 1; }
+
 </style>
 </head>
 <body>
@@ -741,7 +755,7 @@ nav::-webkit-scrollbar { display: none; }
     <div class="card-header">
       <div class="card-icon gold">🏨</div>
       <div>
-        <div class="card-title">Go Hotel City</div>
+        <div class="card-title">Go Hotel City <a href="https://www.google.com/maps/search/?api=1&query=Go+Hotel+City+Copenhagen+Amager" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="card-subtitle">Copenhague · 9-12 jun · 3 noches</div>
       </div>
       <span class="badge confirmed" style="margin-left:auto">✓ Confirmado</span>
@@ -771,7 +785,7 @@ nav::-webkit-scrollbar { display: none; }
     <div class="card-header">
       <div class="card-icon gold">🏨</div>
       <div>
-        <div class="card-title">Good Morning Arlanda</div>
+        <div class="card-title">Good Morning Arlanda <a href="https://www.google.com/maps/search/?api=1&query=Good+Morning+Arlanda+Hotel+Sweden" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="card-subtitle">Arlanda · 12-13 jun · 1 noche</div>
       </div>
       <span class="badge confirmed" style="margin-left:auto">✓ Confirmado</span>
@@ -798,7 +812,7 @@ nav::-webkit-scrollbar { display: none; }
     <div class="card-header">
       <div class="card-icon gold">🏨</div>
       <div>
-        <div class="card-title">voco Stockholm Kista</div>
+        <div class="card-title">voco Stockholm Kista <a href="https://www.google.com/maps/search/?api=1&query=voco+Stockholm+Kista+IHG" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="card-subtitle">Estocolmo · 13-15 jun · 2 noches</div>
       </div>
       <span class="badge confirmed" style="margin-left:auto">✓ Confirmado</span>
@@ -831,7 +845,7 @@ nav::-webkit-scrollbar { display: none; }
     <div class="card-header">
       <div class="card-icon green">🚗</div>
       <div>
-        <div class="card-title">Europcar · Toyota Yaris Cross</div>
+        <div class="card-title">Europcar · Toyota Yaris Cross <a href="https://www.google.com/maps/search/?api=1&query=Copenhagen+Airport+Car+Rental+Centre" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="card-subtitle">CPH Car Rental Centre · 11 jun · 09:00-23:00</div>
       </div>
       <span class="badge confirmed" style="margin-left:auto">✓ Confirmado</span>
@@ -866,7 +880,7 @@ nav::-webkit-scrollbar { display: none; }
     <div class="card-header">
       <div class="card-icon sky">🎫</div>
       <div>
-        <div class="card-title">Subway Art Tour · Estocolmo</div>
+        <div class="card-title">Subway Art Tour · Estocolmo <a href="https://www.google.com/maps/search/?api=1&query=Sergels+Torg+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="card-subtitle">Dom 14 jun · 17:00 · Plaza Sergel</div>
       </div>
       <span class="badge gold" style="margin-left:auto">Krystel</span>
@@ -913,47 +927,47 @@ nav::-webkit-scrollbar { display: none; }
     <div class="timeline">
       <div class="timeline-item confirmed">
         <div class="tl-time">12:40</div>
-        <div class="tl-title">✈ D8 3657 BCN → CPH</div>
+        <div class="tl-title">✈ D8 3657 BCN → CPH <a href="https://www.google.com/maps/search/?api=1&query=Copenhague+Kastrup+Aeropuerto+CPH" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Salida T2 · Llegada T3 15:35 · Loc: XRTPUA</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">15:50</div>
-        <div class="tl-title">Metro M2 → hotel</div>
+        <div class="tl-title">Metro M2 → hotel <a href="https://www.google.com/maps/search/?api=1&query=Lergravsparken+Metro+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Dirección Vanløse · 15 min · bajar Lergravsparken</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">16:30</div>
-        <div class="tl-title">Check-in Go Hotel City</div>
+        <div class="tl-title">Check-in Go Hotel City <a href="https://www.google.com/maps/search/?api=1&query=Go+Hotel+City+Copenhagen+Amager" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Dejar maletas · café rápido</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">17:00</div>
-        <div class="tl-title">Nyhavn</div>
+        <div class="tl-title">Nyhavn <a href="https://www.google.com/maps/search/?api=1&query=Nyhavn+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Casitas de colores y barcos · la postal de Copenhague</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">17:30</div>
-        <div class="tl-title">Iglesia de Mármol</div>
+        <div class="tl-title">Iglesia de Mármol <a href="https://www.google.com/maps/search/?api=1&query=Marble+Church+Frederiks+Kirke+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">5 min andando · cúpula más grande de Escandinavia · gratis</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">17:45</div>
-        <div class="tl-title">Palacio de Amalienborg</div>
+        <div class="tl-title">Palacio de Amalienborg <a href="https://www.google.com/maps/search/?api=1&query=Amalienborg+Palace+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Plaza octogonal con 4 palacios reales</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">18:00</div>
-        <div class="tl-title">Fuente de Gefion</div>
+        <div class="tl-title">Fuente de Gefion <a href="https://www.google.com/maps/search/?api=1&query=Gefion+Fountain+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Diosa arando con 4 bueyes · de paso a Kastellet</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">18:15</div>
-        <div class="tl-title">Kastellet</div>
+        <div class="tl-title">Kastellet <a href="https://www.google.com/maps/search/?api=1&query=Kastellet+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Fortaleza-estrella · molino · Memorial Anchor · gratis</div>
       </div>
       <div class="timeline-item critical">
         <div class="tl-time">20:30</div>
-        <div class="tl-title">🍽 Cena: Gorilla</div>
+        <div class="tl-title">🍽 Cena: Gorilla <a href="https://www.google.com/maps/search/?api=1&query=Restaurant+Gorilla+Fl%C3%A6sketorvet+63+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Flæsketorvet 100 · Vesterbro · RESERVAR 3-4 sem antes · restaurantgorilla.dk · à la carte · pedir terraza · cocina hasta las 00h</div>
       </div>
     </div>
@@ -969,37 +983,37 @@ nav::-webkit-scrollbar { display: none; }
     <div class="timeline">
       <div class="timeline-item">
         <div class="tl-time">9:30</div>
-        <div class="tl-title">Castillo de Rosenborg</div>
+        <div class="tl-title">Castillo de Rosenborg <a href="https://www.google.com/maps/search/?api=1&query=Rosenborg+Castle+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Metro a Nørreport · joyas de la Corona · ~140 DKK · COMPRAR ONLINE antes</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">11:30</div>
-        <div class="tl-title">Jardines del Rey</div>
+        <div class="tl-title">Jardines del Rey <a href="https://www.google.com/maps/search/?api=1&query=Kongens+Have+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Parque más popular de la ciudad · gratis</div>
       </div>
       <div class="timeline-item critical">
         <div class="tl-time">13:00</div>
-        <div class="tl-title">🍽 Almuerzo: Schønnemann</div>
+        <div class="tl-title">🍽 Almuerzo: Schønnemann <a href="https://www.google.com/maps/search/?api=1&query=Restaurant+Schonnemann+Hauser+Plads+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Hauser Pl. 16 · smørrebrød desde 1877 · RESERVAR 1 sem antes · restaurantschonnemann.dk</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">15:00</div>
-        <div class="tl-title">Christiansborg + Torre</div>
+        <div class="tl-title">Christiansborg + Torre <a href="https://www.google.com/maps/search/?api=1&query=Christiansborg+Palace+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Palacio del Parlamento · TORRE GRATIS con vistas 360°</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">17:30</div>
-        <div class="tl-title">Fika: Conditori La Glace</div>
+        <div class="tl-title">Fika: Conditori La Glace <a href="https://www.google.com/maps/search/?api=1&query=Conditori+La+Glace+Skoubogade+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Skoubogade 3 · pastelería 1870 · wienerbrød auténtico</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">18:30</div>
-        <div class="tl-title">Showrooms 3daysofdesign</div>
+        <div class="tl-title">Showrooms 3daysofdesign <a href="https://www.google.com/maps/search/?api=1&query=3daysofdesign+Vesterbro+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Hay · &Tradition · Gubi · Fritz Hansen · entrada libre</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">19:30</div>
-        <div class="tl-title">🍽 Cena en Vesterbro</div>
+        <div class="tl-title">🍽 Cena en Vesterbro <a href="https://www.google.com/maps/search/?api=1&query=Vesterbro+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Mother (pizza) o Pony (alta cocina informal)</div>
       </div>
     </div>
@@ -1016,32 +1030,32 @@ nav::-webkit-scrollbar { display: none; }
     <div class="timeline">
       <div class="timeline-item confirmed">
         <div class="tl-time">9:00</div>
-        <div class="tl-title">🚗 Europcar CPH Car Rental Centre</div>
+        <div class="tl-title">🚗 Europcar CPH Car Rental Centre <a href="https://www.google.com/maps/search/?api=1&query=Copenhagen+Airport+Car+Rental+Centre+Kastrup" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">✅ RESERVADO · Yaris Cross auto · 97,22€ · Llevar: carnet, DNI, tarjeta de crédito, voucher</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">10:00</div>
-        <div class="tl-title">Frederiksborg</div>
+        <div class="tl-title">Frederiksborg <a href="https://www.google.com/maps/search/?api=1&query=Frederiksborg+Castle+Hillerod+Denmark" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">45 min en coche · "Versalles danés" · ~90 DKK/persona</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">13:00</div>
-        <div class="tl-title">🍽 Almuerzo: Helsingør</div>
+        <div class="tl-title">🍽 Almuerzo: Helsingør <a href="https://www.google.com/maps/search/?api=1&query=Helsingor+harbour+Denmark" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Puerto · Madam Sprunck · Kronborg solo desde fuera</div>
       </div>
       <div class="timeline-item critical">
         <div class="tl-time">15:30</div>
-        <div class="tl-title">Louisiana Museum</div>
+        <div class="tl-title">Louisiana Museum <a href="https://www.google.com/maps/search/?api=1&query=Louisiana+Museum+Humlebaek+Denmark" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Arte moderno + jardín esculturas · ~145 DKK · JUEVES abre hasta 22h</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">20:00</div>
-        <div class="tl-title">🍽 Cena en Louisiana</div>
+        <div class="tl-title">🍽 Cena en Louisiana <a href="https://www.google.com/maps/search/?api=1&query=Louisiana+Museum+restaurant+Humlebaek" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Restaurante acristalado del museo con vistas al Øresund</div>
       </div>
       <div class="timeline-item confirmed">
         <div class="tl-time">23:00</div>
-        <div class="tl-title">🚗 Devolver coche · CPH Car Rental Centre</div>
+        <div class="tl-title">🚗 Devolver coche · CPH Car Rental Centre <a href="https://www.google.com/maps/search/?api=1&query=Copenhagen+Airport+Car+Rental+Centre" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Vuelta por E47 · ~45 min · metro M2 al hotel desde T3</div>
       </div>
     </div>
@@ -1058,52 +1072,52 @@ nav::-webkit-scrollbar { display: none; }
     <div class="timeline">
       <div class="timeline-item">
         <div class="tl-time">9:30</div>
-        <div class="tl-title">Mañana lenta · Vesterbro</div>
+        <div class="tl-title">Mañana lenta · Vesterbro <a href="https://www.google.com/maps/search/?api=1&query=Vesterbro+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Desayuno tranquilo · café y paseo sin prisa</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">11:30</div>
-        <div class="tl-title">Iglesia de San Salvador</div>
+        <div class="tl-title">Iglesia de San Salvador <a href="https://www.google.com/maps/search/?api=1&query=Church+of+Our+Saviour+Copenhagen+Vor+Frelsers+Kirke" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Metro M1 a Christianshavn · escalera caracol exterior · 400 escalones · ~70 DKK · RESERVAR ONLINE (aforo limitado)</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">13:00</div>
-        <div class="tl-title">Christiania</div>
+        <div class="tl-title">Christiania <a href="https://www.google.com/maps/search/?api=1&query=Freetown+Christiania+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Almuerzo dentro · NO fotos en Pusher Street</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">15:30</div>
-        <div class="tl-title">Green George</div>
+        <div class="tl-title">Green George <a href="https://www.google.com/maps/search/?api=1&query=Green+George+Thomas+Dambo+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Escultura troll gigante de Thomas Dambo</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">16:30</div>
-        <div class="tl-title">CopenHill</div>
+        <div class="tl-title">CopenHill <a href="https://www.google.com/maps/search/?api=1&query=CopenHill+Amager+Bakke+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Subida por la rampa de césped · Bus 2A · vistas 360° · gratis</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">18:00</div>
-        <div class="tl-title">La Banchina al ocaso</div>
+        <div class="tl-title">La Banchina al ocaso <a href="https://www.google.com/maps/search/?api=1&query=La+Banchina+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Vino natural junto al puerto · cierre nórdico</div>
       </div>
       <div class="timeline-item warning">
         <div class="tl-time">19:00</div>
-        <div class="tl-title">Recoger maletas en Go Hotel City + cena rápida</div>
+        <div class="tl-title">Recoger maletas en Go Hotel City + cena rápida <a href="https://www.google.com/maps/search/?api=1&query=Go+Hotel+City+Copenhagen+Amager" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Algo ligero · consigna abierta hasta el vuelo</div>
       </div>
       <div class="timeline-item warning">
         <div class="tl-time">19:25</div>
-        <div class="tl-title">⚠️ Aeropuerto CPH T3</div>
+        <div class="tl-title">⚠️ Aeropuerto CPH T3 <a href="https://www.google.com/maps/search/?api=1&query=Copenhagen+Airport+Terminal+3" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Metro M2 · 2h antes del vuelo · facturación</div>
       </div>
       <div class="timeline-item confirmed">
         <div class="tl-time">21:25</div>
-        <div class="tl-title">✈ SK 1410 · CPH → ARN</div>
+        <div class="tl-title">✈ SK 1410 · CPH → ARN <a href="https://www.google.com/maps/search/?api=1&query=Copenhagen+Airport+Terminal+3" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Asientos 18E + 18F · Loc: XB6YN5 · llegada 22:35</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">23:00</div>
-        <div class="tl-title">🚌 Lanzadera gratis al hotel</div>
+        <div class="tl-title">🚌 Lanzadera gratis al hotel <a href="https://www.google.com/maps/search/?api=1&query=Good+Morning+Arlanda+Hotel" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Good Morning Arlanda · 10 min · check-in 23:30</div>
       </div>
     </div>
@@ -1119,56 +1133,56 @@ nav::-webkit-scrollbar { display: none; }
     <div class="timeline">
       <div class="timeline-item">
         <div class="tl-time">8:00</div>
-        <div class="tl-title">Desayuno Good Morning Arlanda</div>
+        <div class="tl-title">Desayuno Good Morning Arlanda <a href="https://www.google.com/maps/search/?api=1&query=Good+Morning+Arlanda+Hotel+Sweden" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">9:00</div>
-        <div class="tl-title">🚌 Lanzadera al aeropuerto</div>
+        <div class="tl-title">🚌 Lanzadera al aeropuerto <a href="https://www.google.com/maps/search/?api=1&query=Stockholm+Arlanda+Airport+ARN" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Shuttle gratuito</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">9:15</div>
-        <div class="tl-title">Pendeltåg Arlanda → Helenelund</div>
+        <div class="tl-title">Pendeltåg Arlanda → Helenelund <a href="https://www.google.com/maps/search/?api=1&query=Helenelund+station+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">18 min · comprar billete con recargo aeropuerto (~24€ los 2) · en app SL o mostrador</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">10:00</div>
-        <div class="tl-title">Dejar maletas · voco Kista</div>
+        <div class="tl-title">Dejar maletas · voco Kista <a href="https://www.google.com/maps/search/?api=1&query=voco+Stockholm+Kista+IHG" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">8 min andando desde Helenelund · consigna gratuita</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">10:30</div>
-        <div class="tl-title">Comprar SL 72h en app + metro al centro</div>
+        <div class="tl-title">Comprar SL 72h en app + metro al centro <a href="https://www.google.com/maps/search/?api=1&query=Kista+tunnelbana+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">310 SEK/persona (~56€ los 2) · Metro azul T11 → T-Centralen · 22 min</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">11:00</div>
-        <div class="tl-title">Gamla Stan</div>
+        <div class="tl-title">Gamla Stan <a href="https://www.google.com/maps/search/?api=1&query=Gamla+Stan+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Stortorget · Storkyrkan · Mårten Trotzigs Gränd</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">12:15</div>
-        <div class="tl-title">Cambio de guardia · Palacio Real</div>
+        <div class="tl-title">Cambio de guardia · Palacio Real <a href="https://www.google.com/maps/search/?api=1&query=Stockholm+Royal+Palace" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Sábados es el mejor día</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">12:30</div>
-        <div class="tl-title">Stadshuset</div>
+        <div class="tl-title">Stadshuset <a href="https://www.google.com/maps/search/?api=1&query=Stockholm+City+Hall+Stadshuset" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Hantverkargatan 1 · tour 45 min · Salón Dorado y Salón Azul (Premio Nobel) · comprar ticket en taquilla</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">14:30</div>
-        <div class="tl-title">🍽 Östermalms Saluhall</div>
+        <div class="tl-title">🍽 Östermalms Saluhall <a href="https://www.google.com/maps/search/?api=1&query=Ostermalms+Saluhall+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Mercado modernista · Toast Skagen en Lisa Elmqvist</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">16:30</div>
-        <div class="tl-title">Fika: Vete Katten</div>
+        <div class="tl-title">Fika: Vete Katten <a href="https://www.google.com/maps/search/?api=1&query=Vete+Katten+Kungsgatan+55+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Kungsgatan 55 · café + kanelbulle · 45 min sin móvil</div>
       </div>
       <div class="timeline-item critical">
         <div class="tl-time">19:30</div>
-        <div class="tl-title">🍽 Cena: Pelikan</div>
+        <div class="tl-title">🍽 Cena: Pelikan <a href="https://www.google.com/maps/search/?api=1&query=Pelikan+restaurant+Blekingegatan+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Blekingegatan 40 · Söder · cervecería 1733 · köttbullar · RESERVAR 1 sem antes · pelikan.se</div>
       </div>
       <div class="timeline-item">
@@ -1178,7 +1192,7 @@ nav::-webkit-scrollbar { display: none; }
       </div>
       <div class="timeline-item confirmed">
         <div class="tl-time">22:30</div>
-        <div class="tl-title">🏨 Check-in voco Kista</div>
+        <div class="tl-title">🏨 Check-in voco Kista <a href="https://www.google.com/maps/search/?api=1&query=voco+Stockholm+Kista+IHG" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Metro T11 desde T-Centralen · 22 min · recepción 24h</div>
       </div>
     </div>
@@ -1195,46 +1209,46 @@ nav::-webkit-scrollbar { display: none; }
     <div class="timeline">
       <div class="timeline-item warning">
         <div class="tl-time">8:30</div>
-        <div class="tl-title">⚠️ Vasa Museum AL ABRIR</div>
+        <div class="tl-title">⚠️ Vasa Museum AL ABRIR <a href="https://www.google.com/maps/search/?api=1&query=Vasa+Museum+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">CRÍTICO: a las 11h hay colas brutales · tranvía 7 · Djurgårdsvägen 14</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">10:30</div>
-        <div class="tl-title">Museo de ABBA (solo si sois fans)</div>
+        <div class="tl-title">Museo de ABBA (solo si sois fans) <a href="https://www.google.com/maps/search/?api=1&query=ABBA+The+Museum+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">5 min andando del Vasa · 24€/persona · 1h-1h30</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">12:00</div>
-        <div class="tl-title">Skansen</div>
+        <div class="tl-title">Skansen <a href="https://www.google.com/maps/search/?api=1&query=Skansen+open+air+museum+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Museo al aire libre · casas históricas + zoo nórdico · artesanos de época</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">14:00</div>
-        <div class="tl-title">🍽 Almuerzo: Rosendals Trädgård</div>
+        <div class="tl-title">🍽 Almuerzo: Rosendals Trädgård <a href="https://www.google.com/maps/search/?api=1&query=Rosendals+Tradgard+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">15 min andando · jardín ecológico · mesas bajo manzanos · kanelbulle de leña</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">15:30</div>
-        <div class="tl-title">Vuelta hacia Plaza Sergel</div>
+        <div class="tl-title">Vuelta hacia Plaza Sergel <a href="https://www.google.com/maps/search/?api=1&query=Sergels+Torg+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Tranvía 7 al centro</div>
       </div>
       <div class="timeline-item confirmed">
         <div class="tl-time">17:00</div>
-        <div class="tl-title">🎫 SUBWAY ART TOUR</div>
+        <div class="tl-title">🎫 SUBWAY ART TOUR <a href="https://www.google.com/maps/search/?api=1&query=Sergels+Torg+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Plaza Sergel · Ref: A38809069 · 2 personas · LLEGAR 15 MIN ANTES</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">~19:00</div>
-        <div class="tl-title">🍽 Cena cerca del centro</div>
+        <div class="tl-title">🍽 Cena cerca del centro <a href="https://www.google.com/maps/search/?api=1&query=Norrmalm+restaurants+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">21:00</div>
-        <div class="tl-title">Atardecer Fotografiska</div>
+        <div class="tl-title">Atardecer Fotografiska <a href="https://www.google.com/maps/search/?api=1&query=Fotografiska+Museum+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Restaurante azotea · vistas a Gamla Stan</div>
       </div>
       <div class="timeline-item warning">
         <div class="tl-time">22:30</div>
-        <div class="tl-title">⚠️ Tantolunden</div>
+        <div class="tl-title">⚠️ Tantolunden <a href="https://www.google.com/maps/search/?api=1&query=Tantolunden+park+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Parque junto al lago · luz violeta hasta 23:30 · SALIR ANTES 00:30</div>
       </div>
     </div>
@@ -1250,30 +1264,30 @@ nav::-webkit-scrollbar { display: none; }
     <div class="timeline">
       <div class="timeline-item">
         <div class="tl-time">9:30</div>
-        <div class="tl-title">Hornstullsstrand</div>
+        <div class="tl-title">Hornstullsstrand <a href="https://www.google.com/maps/search/?api=1&query=Hornstullsstrand+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Metro a Hornstull · bares al agua y barrio</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">11:30</div>
-        <div class="tl-title">🍽 Almuerzo tranquilo en Söder</div>
+        <div class="tl-title">🍽 Almuerzo tranquilo en Söder <a href="https://www.google.com/maps/search/?api=1&query=Sodermalm+restaurants+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">12:30</div>
-        <div class="tl-title">Recoger maletas · voco Kista</div>
+        <div class="tl-title">Recoger maletas · voco Kista <a href="https://www.google.com/maps/search/?api=1&query=voco+Stockholm+Kista+IHG" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Metro al hotel y recoger</div>
       </div>
       <div class="timeline-item warning">
         <div class="tl-time">13:45</div>
-        <div class="tl-title">⚠️ Arlanda Express</div>
+        <div class="tl-title">⚠️ Arlanda Express <a href="https://www.google.com/maps/search/?api=1&query=Stockholm+Central+Station+Arlanda+Express" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Desde Estación Central · 20 min al aeropuerto · ~60€ los 2 · comprar online antes</div>
       </div>
       <div class="timeline-item">
         <div class="tl-time">14:05</div>
-        <div class="tl-title">Llegada ARN T5 · facturar</div>
+        <div class="tl-title">Llegada ARN T5 · facturar <a href="https://www.google.com/maps/search/?api=1&query=Stockholm+Arlanda+Airport+Terminal+5" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
       </div>
       <div class="timeline-item confirmed">
         <div class="tl-time">16:20</div>
-        <div class="tl-title">✈ D8 4253 · ARN → BCN</div>
+        <div class="tl-title">✈ D8 4253 · ARN → BCN <a href="https://www.google.com/maps/search/?api=1&query=Stockholm+Arlanda+Airport+ARN" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Llegada Barcelona T2 19:45 · Loc: XRUYR6</div>
       </div>
     </div>
