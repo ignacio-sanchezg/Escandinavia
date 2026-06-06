@@ -594,7 +594,59 @@ nav::-webkit-scrollbar { display: none; }
 }
 .map-link:hover { opacity: 1; }
 
+
+/* ── LEAFLET MAP ── */
+.day-map {
+  width: 100%; height: 220px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-sm);
+}
+/* ── PHOTO STRIP ── */
+.photo-strip {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 14px;
+  scrollbar-width: none;
+  margin-bottom: 4px;
+}
+.photo-strip::-webkit-scrollbar { display: none; }
+.photo-card {
+  flex-shrink: 0;
+  width: 140px; height: 95px;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+  background: var(--stone);
+  box-shadow: var(--shadow-sm);
+}
+.photo-card img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.photo-card-label {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(0,0,0,.55));
+  color: white;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 12px 7px 5px;
+  line-height: 1.2;
+}
+.photo-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+  background: var(--stone);
+}
+
 </style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
 </head>
 <body>
 
@@ -924,6 +976,8 @@ nav::-webkit-scrollbar { display: none; }
       <div class="day-title">Llegada · Indre By clásico</div>
       <div class="day-sleep">🌙 Dormir en <span class="day-hotel-badge">Go Hotel City</span></div>
     </div>
+    <div id="map-day-1" class="day-map"></div>
+    <div id="photos-day-1" class="photo-strip"></div>
     <div class="timeline">
       <div class="timeline-item confirmed">
         <div class="tl-time">12:40</div>
@@ -980,6 +1034,8 @@ nav::-webkit-scrollbar { display: none; }
       <div class="day-title">Centro histórico · Castillos y diseño</div>
       <div class="day-sleep">🌙 Dormir en <span class="day-hotel-badge">Go Hotel City</span></div>
     </div>
+    <div id="map-day-2" class="day-map"></div>
+    <div id="photos-day-2" class="photo-strip"></div>
     <div class="timeline">
       <div class="timeline-item">
         <div class="tl-time">9:30</div>
@@ -1027,6 +1083,8 @@ nav::-webkit-scrollbar { display: none; }
       <div class="day-sleep">🌙 Dormir en <span class="day-hotel-badge">Go Hotel City</span></div>
     </div>
     <div class="guide-alert">🚗 Recoger coche en CPH Car Rental Centre · Terminal Bus desde T3 · Europcar · Toyota Yaris Cross automático</div>
+    <div id="map-day-3" class="day-map"></div>
+    <div id="photos-day-3" class="photo-strip"></div>
     <div class="timeline">
       <div class="timeline-item confirmed">
         <div class="tl-time">9:00</div>
@@ -1069,6 +1127,8 @@ nav::-webkit-scrollbar { display: none; }
       <div class="day-sleep">🌙 Dormir en <span class="day-hotel-badge">Good Morning Arlanda</span></div>
     </div>
     <div class="guide-tip">✅ Maletas en Go Hotel City (consigna gratis confirmada). Recogerlas antes de las 19:00.</div>
+    <div id="map-day-4" class="day-map"></div>
+    <div id="photos-day-4" class="photo-strip"></div>
     <div class="timeline">
       <div class="timeline-item">
         <div class="tl-time">9:30</div>
@@ -1130,6 +1190,8 @@ nav::-webkit-scrollbar { display: none; }
       <div class="day-title">Transición · Gamla Stan · Söder</div>
       <div class="day-sleep">🌙 Dormir en <span class="day-hotel-badge">voco Stockholm Kista</span></div>
     </div>
+    <div id="map-day-5" class="day-map"></div>
+    <div id="photos-day-5" class="photo-strip"></div>
     <div class="timeline">
       <div class="timeline-item">
         <div class="tl-time">8:00</div>
@@ -1206,6 +1268,8 @@ nav::-webkit-scrollbar { display: none; }
       <div class="day-sleep">🌙 Dormir en <span class="day-hotel-badge">voco Stockholm Kista</span></div>
     </div>
     <div class="guide-alert">⚠️ Domingo noche: el metro NO funciona 24h. Último servicio ~01:00. No quedarse más tarde.</div>
+    <div id="map-day-6" class="day-map"></div>
+    <div id="photos-day-6" class="photo-strip"></div>
     <div class="timeline">
       <div class="timeline-item warning">
         <div class="tl-time">8:30</div>
@@ -1261,6 +1325,8 @@ nav::-webkit-scrollbar { display: none; }
       <div class="day-title">Hornstull · Vuelta a casa</div>
       <div class="day-sleep">✈ Vuelo de regreso a Barcelona</div>
     </div>
+    <div id="map-day-7" class="day-map"></div>
+    <div id="photos-day-7" class="photo-strip"></div>
     <div class="timeline">
       <div class="timeline-item">
         <div class="tl-time">9:30</div>
@@ -1744,5 +1810,95 @@ function loadChecks() {
 
 loadChecks();
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script>
+const DAYS_DATA = [{"day": 1, "emoji": "🇩🇰", "title": "Copenhague · Indre By", "zoom": 14, "center": [55.682, 12.589], "stops": [{"n": "Nyhavn", "lat": 55.6799, "lng": 12.5929}, {"n": "Iglesia de Mármol", "lat": 55.6844, "lng": 12.5925}, {"n": "Amalienborg", "lat": 55.684, "lng": 12.592}, {"n": "Gefion", "lat": 55.6915, "lng": 12.5943}, {"n": "Kastellet", "lat": 55.6921, "lng": 12.595}, {"n": "Gorilla 🍽", "lat": 55.6617, "lng": 12.555}], "photos": [{"title": "Nyhavn", "emoji": "🏠"}, {"title": "Frederiks Kirke", "emoji": "⛪"}, {"title": "Amalienborg Palace", "emoji": "👑"}, {"title": "Kastellet Copenhagen", "emoji": "🏰"}]}, {"day": 2, "emoji": "🏰", "title": "Castillos y diseño", "zoom": 14, "center": [55.68, 12.578], "stops": [{"n": "Rosenborg", "lat": 55.6859, "lng": 12.5774}, {"n": "Schønnemann 🍽", "lat": 55.6806, "lng": 12.574}, {"n": "Christiansborg", "lat": 55.6762, "lng": 12.5795}, {"n": "La Glace", "lat": 55.6796, "lng": 12.5779}, {"n": "Vesterbro 🍽", "lat": 55.668, "lng": 12.549}], "photos": [{"title": "Rosenborg Castle", "emoji": "🏰"}, {"title": "Christiansborg Palace", "emoji": "🏛"}, {"title": "Conditori La Glace", "emoji": "🍰"}, {"title": "Vesterbro Copenhagen", "emoji": "🏙"}]}, {"day": 3, "emoji": "🚗", "title": "Riviera danesa", "zoom": 9, "center": [55.84, 12.46], "stops": [{"n": "CPH Aeropuerto 🚗", "lat": 55.618, "lng": 12.656}, {"n": "Frederiksborg", "lat": 55.9344, "lng": 12.3019}, {"n": "Helsingør 🍽", "lat": 56.0365, "lng": 12.6136}, {"n": "Louisiana Museum", "lat": 55.9678, "lng": 12.5432}, {"n": "CPH Aeropuerto 🔙", "lat": 55.618, "lng": 12.656}], "photos": [{"title": "Frederiksborg Castle", "emoji": "🏰"}, {"title": "Helsingør", "emoji": "⚓"}, {"title": "Louisiana Museum of Modern Art", "emoji": "🎨"}, {"title": "Øresund", "emoji": "🌊"}]}, {"day": 4, "emoji": "🌙", "title": "Christianshavn · Vuelo", "zoom": 13, "center": [55.672, 12.586], "stops": [{"n": "Vor Frelsers Kirke", "lat": 55.672, "lng": 12.582}, {"n": "Christiania", "lat": 55.6728, "lng": 12.5895}, {"n": "CopenHill", "lat": 55.6538, "lng": 12.6248}, {"n": "La Banchina", "lat": 55.6813, "lng": 12.6066}, {"n": "CPH T3 ✈", "lat": 55.618, "lng": 12.656}], "photos": [{"title": "Church of Our Saviour Copenhagen", "emoji": "⛪"}, {"title": "Freetown Christiania", "emoji": "🌿"}, {"title": "CopenHill", "emoji": "♻️"}, {"title": "Copenhagen Airport", "emoji": "✈️"}]}, {"day": 5, "emoji": "🇸🇪", "title": "Estocolmo · Gamla Stan", "zoom": 12, "center": [59.332, 18.062], "stops": [{"n": "voco Kista 🏨", "lat": 59.4035, "lng": 17.9452}, {"n": "Gamla Stan", "lat": 59.325, "lng": 18.071}, {"n": "Stadshuset", "lat": 59.3274, "lng": 18.0537}, {"n": "Saluhall", "lat": 59.3362, "lng": 18.0742}, {"n": "Vete Katten", "lat": 59.3339, "lng": 18.0603}, {"n": "Pelikan 🍽", "lat": 59.3156, "lng": 18.0739}, {"n": "Skinnarviksberget 🌅", "lat": 59.3177, "lng": 18.045}], "photos": [{"title": "Gamla stan", "emoji": "🏘"}, {"title": "Stockholm City Hall", "emoji": "🏛"}, {"title": "Östermalms saluhall", "emoji": "🥘"}, {"title": "Södermalm", "emoji": "🌆"}]}, {"day": 6, "emoji": "🎫", "title": "Djurgården · Subway Tour", "zoom": 13, "center": [59.327, 18.087], "stops": [{"n": "Vasa Museum ⚓", "lat": 59.328, "lng": 18.0913}, {"n": "ABBA Museum", "lat": 59.3247, "lng": 18.0936}, {"n": "Skansen", "lat": 59.3247, "lng": 18.1045}, {"n": "Rosendals 🍽", "lat": 59.3191, "lng": 18.0984}, {"n": "Sergels Torg 🎫", "lat": 59.3329, "lng": 18.0651}, {"n": "Fotografiska", "lat": 59.3166, "lng": 18.0844}, {"n": "Tantolunden 🌙", "lat": 59.3099, "lng": 18.0605}], "photos": [{"title": "Vasa Museum", "emoji": "⚓"}, {"title": "Skansen", "emoji": "🦌"}, {"title": "Fotografiska", "emoji": "📷"}, {"title": "Sergels torg", "emoji": "🎭"}]}, {"day": 7, "emoji": "✈", "title": "Hornstull · Vuelta", "zoom": 12, "center": [59.34, 17.98], "stops": [{"n": "Hornstullsstrand", "lat": 59.3166, "lng": 18.0323}, {"n": "T-Centralen", "lat": 59.3312, "lng": 18.0589}, {"n": "ARN T5 ✈", "lat": 59.6519, "lng": 17.9186}], "photos": [{"title": "Hornstull Stockholm", "emoji": "🌅"}, {"title": "Södermalm", "emoji": "☕"}, {"title": "Stockholm Arlanda Airport", "emoji": "✈️"}, {"title": "Barcelona", "emoji": "🏠"}]}];
+const MAP_TILE = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png';
+const TILE_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+
+const COLOR_ROUTE = '#e8a020';
+const COLOR_START = '#2d7a4f';
+const COLOR_END   = '#e05a3a';
+const COLOR_MID   = '#2d5282';
+
+function makeIcon(color, num) {
+  return L.divIcon({
+    className: '',
+    html: `<div style="background:${color};color:white;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;border:2px solid white;box-shadow:0 2px 6px rgba(0,0,0,.3)">${num}</div>`,
+    iconSize: [26, 26], iconAnchor: [13, 13]
+  });
+}
+
+function initMap(d) {
+  const el = document.getElementById('map-day-' + d.day);
+  if (!el || el._leaflet_id) return;
+  const map = L.map(el, { zoomControl: false, attributionControl: false })
+    .setView(d.center, d.zoom);
+  L.tileLayer(MAP_TILE, { attribution: TILE_ATTR }).addTo(map);
+  L.control.zoom({ position: 'bottomright' }).addTo(map);
+
+  const latlngs = d.stops.map(s => [s.lat, s.lng]);
+  L.polyline(latlngs, { color: COLOR_ROUTE, weight: 3, opacity: .8, dashArray: '6 4' }).addTo(map);
+
+  d.stops.forEach((s, i) => {
+    const color = i === 0 ? COLOR_START : (i === d.stops.length - 1 ? COLOR_END : COLOR_MID);
+    L.marker([s.lat, s.lng], { icon: makeIcon(color, i + 1) })
+      .bindPopup(`<strong>${s.n}</strong>`)
+      .addTo(map);
+  });
+}
+
+async function loadPhotos(d) {
+  const strip = document.getElementById('photos-day-' + d.day);
+  if (!strip || strip.dataset.loaded) return;
+  strip.dataset.loaded = '1';
+  for (const p of d.photos) {
+    const card = document.createElement('div');
+    card.className = 'photo-card';
+    card.innerHTML = `<div class="photo-placeholder">${p.emoji}</div><div class="photo-card-label">${p.title}</div>`;
+    strip.appendChild(card);
+    try {
+      const slug = encodeURIComponent(p.title.replace(/ /g, '_'));
+      const res = await fetch(`https://en.wikipedia.org/api/rest_v1/page/summary/${slug}`);
+      if (res.ok) {
+        const data = await res.json();
+        if (data.thumbnail?.source) {
+          card.innerHTML = `<img src="${data.thumbnail.source}" alt="${p.title}" loading="lazy"><div class="photo-card-label">${p.title}</div>`;
+        }
+      }
+    } catch(e) {}
+  }
+}
+
+// Activar mapa y fotos cuando se muestra el día
+const _origShowDay = showDay;
+window.showDay = function(n) {
+  _origShowDay(n);
+  const d = DAYS_DATA.find(x => x.day === n);
+  if (d) {
+    setTimeout(() => { initMap(d); loadPhotos(d); }, 50);
+  }
+};
+
+// Inicializar día 1 al cargar la sección Días
+const _origShowSection = showSection;
+window.showSection = function(id) {
+  _origShowSection(id);
+  if (id === 'dias') {
+    const d = DAYS_DATA.find(x => x.day === 1);
+    if (d) setTimeout(() => { initMap(d); loadPhotos(d); }, 100);
+  }
+};
+
+// Si el usuario llega directo a la sección Días (estado inicial), inicializar día 1
+document.addEventListener('DOMContentLoaded', () => {
+  const d1 = DAYS_DATA.find(x => x.day === 1);
+  if (d1 && document.getElementById('day-1')?.classList.contains('active')) {
+    setTimeout(() => { initMap(d1); loadPhotos(d1); }, 200);
+  }
+});
+</script>
+
 </body>
 </html>
