@@ -2196,8 +2196,8 @@ function renderLegend(d) {
     const color   = isFirst ? '#2d7a4f' : (isLast ? '#e05a3a' : '#2d5282');
     const name    = s.n.replace(/ [🚗🏨🍽✈🌅🎫🔙⚓]/g, '').trim();
     return `<div class="map-legend-item">
-      <div class="map-legend-dot" style="background:\${color}">\${i+1}</div>
-      <span>\${name}</span>
+      <div class="map-legend-dot" style="background:${color}">${i+1}</div>
+      <span>${name}</span>
     </div>`;
   }).join('');
 }
@@ -2305,12 +2305,12 @@ var WX_DATA=[{"day": 1, "date": "2026-06-09", "lat": 55.6761, "lon": 12.5683, "c
 var WX_KEY='wx_escan_v8',WX_TTL=43200000;
 function wmoI(c){
   if(c===0)return{i:'\u2600\ufe0f',d:'Despejado',cls:'sunny'};
-  if(c<=2)return{i:'\U0001f324',d:'Poco nublado',cls:'sunny'};
+  if(c<=2)return{i:'🌤',d:'Poco nublado',cls:'sunny'};
   if(c===3)return{i:'\u2601\ufe0f',d:'Nublado',cls:'cloudy'};
-  if(c<=48)return{i:'\U0001f32b',d:'Niebla',cls:'cloudy'};
-  if(c<=55)return{i:'\U0001f326',d:'Llovizna',cls:'rainy'};
-  if(c<=65)return{i:'\U0001f327',d:'Lluvia',cls:'rainy'};
-  if(c<=82)return{i:'\U0001f326',d:'Chubascos',cls:'rainy'};
+  if(c<=48)return{i:'🌫',d:'Niebla',cls:'cloudy'};
+  if(c<=55)return{i:'🌦',d:'Llovizna',cls:'rainy'};
+  if(c<=65)return{i:'🌧',d:'Lluvia',cls:'rainy'};
+  if(c<=82)return{i:'🌦',d:'Chubascos',cls:'rainy'};
   return{i:'\u26c8',d:'Tormenta',cls:'storm'};
 }
 function wxC(tmax,tmin,precip,wind){
