@@ -2300,266 +2300,86 @@ window.showSection = function(id, btn) {
 
 
 <script>
-// ── DATOS DE DÍAS, COORDENADAS Y PARADAS ────────────────────────────────
-const WX_DAYS = [
-  { day:1, date:'2026-06-09', lat:55.6761, lon:12.5683, city:'Copenhague', tz:'Europe/Copenhagen',
-    stops:[
-      {time:'15:35', name:'Llegada CPH'},
-      {time:'16:30', name:'Check-in hotel'},
-      {time:'17:00', name:'Nyhavn'},
-      {time:'18:00', name:'Amalienborg · Gefion'},
-      {time:'18:15', name:'Kastellet'},
-      {time:'20:30', name:'Cena · Gorilla 🍽'},
-    ]},
-  { day:2, date:'2026-06-10', lat:55.6761, lon:12.5683, city:'Copenhague', tz:'Europe/Copenhagen',
-    stops:[
-      {time:'09:30', name:'Castillo de Rosenborg'},
-      {time:'11:30', name:'Jardines del Rey'},
-      {time:'13:00', name:'Almuerzo · Schønnemann 🍽'},
-      {time:'15:00', name:'Christiansborg + Torre'},
-      {time:'17:30', name:'Fika · La Glace'},
-      {time:'18:30', name:'Showrooms 3daysofdesign'},
-      {time:'19:30', name:'Cena Vesterbro 🍽'},
-    ]},
-  { day:3, date:'2026-06-11', lat:55.9678, lon:12.5432, city:'Riviera danesa', tz:'Europe/Copenhagen',
-    stops:[
-      {time:'09:00', name:'Recogida coche CPH 🚗'},
-      {time:'10:00', name:'Frederiksborg Castle'},
-      {time:'13:00', name:'Almuerzo · Helsingør 🍽'},
-      {time:'15:30', name:'Louisiana Museum'},
-      {time:'20:00', name:'Cena en Louisiana 🍽'},
-      {time:'22:30', name:'Devolución coche'},
-    ]},
-  { day:4, date:'2026-06-12', lat:55.6761, lon:12.5683, city:'Copenhague → Arlanda', tz:'Europe/Copenhagen',
-    stops:[
-      {time:'11:30', name:'Iglesia de San Salvador'},
-      {time:'13:00', name:'Christiania · almuerzo'},
-      {time:'15:30', name:'Green George'},
-      {time:'16:30', name:'CopenHill'},
-      {time:'18:00', name:'La Banchina'},
-      {time:'19:25', name:'Aeropuerto CPH T3 ✈'},
-      {time:'21:25', name:'Vuelo SK1410 → Arlanda'},
-    ]},
-  { day:5, date:'2026-06-13', lat:59.3293, lon:18.0686, city:'Estocolmo', tz:'Europe/Stockholm',
-    stops:[
-      {time:'10:30', name:'Gamla Stan'},
-      {time:'12:15', name:'Cambio de guardia · Palacio Real'},
-      {time:'12:30', name:'Stadshuset'},
-      {time:'14:30', name:'Östermalms Saluhall 🍽'},
-      {time:'16:30', name:'Fika · Vete Katten'},
-      {time:'19:30', name:'Cena · Pelikan 🍽'},
-      {time:'21:30', name:'Skinnarviksberget 🌅'},
-    ]},
-  { day:6, date:'2026-06-14', lat:59.3293, lon:18.0686, city:'Estocolmo', tz:'Europe/Stockholm',
-    stops:[
-      {time:'08:30', name:'Vasa Museum ⚓'},
-      {time:'10:30', name:'Museo de ABBA'},
-      {time:'12:00', name:'Skansen'},
-      {time:'14:00', name:'Almuerzo · Rosendals 🍽'},
-      {time:'17:00', name:'Subway Art Tour 🎫 · Sergels Torg'},
-      {time:'21:00', name:'Fotografiska · atardecer'},
-      {time:'22:30', name:'Tantolunden 🌙'},
-    ]},
-  { day:7, date:'2026-06-15', lat:59.3293, lon:18.0686, city:'Estocolmo → BCN', tz:'Europe/Stockholm',
-    stops:[
-      {time:'09:30', name:'Hornstullsstrand'},
-      {time:'11:30', name:'Almuerzo · Söder 🍽'},
-      {time:'13:45', name:'Arlanda Express 🚂'},
-      {time:'16:20', name:'Vuelo D8 4253 → BCN ✈'},
-    ]},
-];
-
-const CACHE_KEY = 'wxdata_escandinavia_v3';
-const CACHE_TTL = 12 * 60 * 60 * 1000;
-
-function wmoInfo(code) {
-  if (code === 0)  return { icon:'☀️', desc:'Despejado',           cls:'sunny'  };
-  if (code <= 2)   return { icon:'🌤', desc:'Poco nublado',        cls:'sunny'  };
-  if (code === 3)  return { icon:'☁️', desc:'Nublado',             cls:'cloudy' };
-  if (code <= 48)  return { icon:'🌫', desc:'Niebla',              cls:'cloudy' };
-  if (code <= 55)  return { icon:'🌦', desc:'Llovizna',            cls:'rainy'  };
-  if (code <= 65)  return { icon:'🌧', desc:'Lluvia',              cls:'rainy'  };
-  if (code <= 77)  return { icon:'❄️', desc:'Nieve',               cls:'cloudy' };
-  if (code <= 82)  return { icon:'🌦', desc:'Chubascos',           cls:'rainy'  };
-  if (code <= 94)  return { icon:'🌨', desc:'Granizo',             cls:'cloudy' };
-  return                   { icon:'⛈', desc:'Tormenta',            cls:'storm'  };
+// METEOROLOGIA Open-Meteo (DMI+SMHI) cache 12h
+var WX_DATA=[{"day": 1, "date": "2026-06-09", "lat": 55.6761, "lon": 12.5683, "city": "Copenhague", "tz": "Europe/Copenhagen", "stops": [{"time": "15:35", "name": "Llegada CPH"}, {"time": "17:00", "name": "Nyhavn"}, {"time": "18:15", "name": "Kastellet"}, {"time": "20:30", "name": "Cena Gorilla"}]}, {"day": 2, "date": "2026-06-10", "lat": 55.6761, "lon": 12.5683, "city": "Copenhague", "tz": "Europe/Copenhagen", "stops": [{"time": "09:30", "name": "Rosenborg"}, {"time": "13:00", "name": "Schonnemann"}, {"time": "15:00", "name": "Christiansborg"}, {"time": "17:30", "name": "La Glace"}, {"time": "19:30", "name": "Cena Vesterbro"}]}, {"day": 3, "date": "2026-06-11", "lat": 55.9678, "lon": 12.5432, "city": "Riviera danesa", "tz": "Europe/Copenhagen", "stops": [{"time": "09:00", "name": "Recogida coche"}, {"time": "10:00", "name": "Frederiksborg"}, {"time": "13:00", "name": "Helsingor"}, {"time": "15:30", "name": "Louisiana Museum"}, {"time": "20:00", "name": "Cena Louisiana"}]}, {"day": 4, "date": "2026-06-12", "lat": 55.6761, "lon": 12.5683, "city": "Copenhague", "tz": "Europe/Copenhagen", "stops": [{"time": "11:30", "name": "San Salvador"}, {"time": "13:00", "name": "Christiania"}, {"time": "16:30", "name": "CopenHill"}, {"time": "18:00", "name": "La Banchina"}, {"time": "19:25", "name": "Aeropuerto CPH"}]}, {"day": 5, "date": "2026-06-13", "lat": 59.3293, "lon": 18.0686, "city": "Estocolmo", "tz": "Europe/Stockholm", "stops": [{"time": "10:30", "name": "Gamla Stan"}, {"time": "12:30", "name": "Stadshuset"}, {"time": "14:30", "name": "Saluhall"}, {"time": "16:30", "name": "Vete Katten"}, {"time": "19:30", "name": "Pelikan"}, {"time": "21:30", "name": "Skinnarviksberget"}]}, {"day": 6, "date": "2026-06-14", "lat": 59.3293, "lon": 18.0686, "city": "Estocolmo", "tz": "Europe/Stockholm", "stops": [{"time": "08:30", "name": "Vasa Museum"}, {"time": "12:00", "name": "Skansen"}, {"time": "14:00", "name": "Rosendals"}, {"time": "17:00", "name": "Subway Art Tour"}, {"time": "21:00", "name": "Fotografiska"}, {"time": "22:30", "name": "Tantolunden"}]}, {"day": 7, "date": "2026-06-15", "lat": 59.3293, "lon": 18.0686, "city": "Estocolmo", "tz": "Europe/Stockholm", "stops": [{"time": "09:30", "name": "Hornstullsstrand"}, {"time": "11:30", "name": "Almuerzo Soeder"}, {"time": "13:45", "name": "Arlanda Express"}, {"time": "16:20", "name": "Vuelo BCN"}]}];
+var WX_KEY='wx_escan_v8',WX_TTL=43200000;
+function wmoI(c){
+  if(c===0)return{i:'\u2600\ufe0f',d:'Despejado',cls:'sunny'};
+  if(c<=2)return{i:'\U0001f324',d:'Poco nublado',cls:'sunny'};
+  if(c===3)return{i:'\u2601\ufe0f',d:'Nublado',cls:'cloudy'};
+  if(c<=48)return{i:'\U0001f32b',d:'Niebla',cls:'cloudy'};
+  if(c<=55)return{i:'\U0001f326',d:'Llovizna',cls:'rainy'};
+  if(c<=65)return{i:'\U0001f327',d:'Lluvia',cls:'rainy'};
+  if(c<=82)return{i:'\U0001f326',d:'Chubascos',cls:'rainy'};
+  return{i:'\u26c8',d:'Tormenta',cls:'storm'};
 }
-
-function clothingRec(tmax, tmin, precip, wind) {
-  const tmid = (tmax + tmin) / 2;
-  let icon = '👕', rec = '';
-  if      (tmid >= 22) { icon='🩳'; rec='Ropa ligera. Camiseta y pantalón fino.'; }
-  else if (tmid >= 16) { icon='👕'; rec='Temperatura agradable. Camiseta + chaqueta ligera por la noche.'; }
-  else if (tmid >= 10) { icon='🧥'; rec='Fresco. Jeans, jersey y chaqueta.'; }
-  else                 { icon='🧣'; rec='Frío. Abrigo y capas.'; }
-  if (precip > 3)    rec += ' 🌂 Lleva chubasquero — hay probabilidad de lluvia.';
-  if (wind > 25)     rec += ' 💨 Viento: añade cortavientos.';
-  if (precip <= 3 && tmid >= 16) rec += ' 🕶 Posible sol: protector solar.';
-  return { icon, rec };
+function wxC(tmax,tmin,precip,wind){
+  var tm=(tmax+tmin)/2,icon,rec;
+  if(tm>=22){icon='Calor';rec='Ropa ligera.';}
+  else if(tm>=16){icon='Agradable';rec='Camiseta + chaqueta ligera.';}
+  else if(tm>=10){icon='Fresco';rec='Jeans y chaqueta.';}
+  else{icon='Frio';rec='Abrigo y capas.';}
+  if(precip>3)rec+=' Lleva chubasquero.';
+  if(wind>25)rec+=' Lleva cortavientos.';
+  if(precip<=3&&tm>=16)rec+=' Protector solar.';
+  return{icon:icon,rec:rec};
 }
-
-async function fetchWeatherHourly(lat, lon, date, tz) {
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
-    `&hourly=temperature_2m,apparent_temperature,precipitation_probability,weathercode,windspeed_10m` +
-    `&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,windspeed_10m_max,weathercode` +
-    `&timezone=${tz}&start_date=${date}&end_date=${date}&models=best_match`;
-  const res = await fetch(url);
-  if (!res.ok) throw new Error('HTTP ' + res.status);
-  const d = await res.json();
-  return {
-    daily: {
-      tmax:  Math.round(d.daily.temperature_2m_max[0]),
-      tmin:  Math.round(d.daily.temperature_2m_min[0]),
-      precip: Math.round(d.daily.precipitation_sum[0] * 10) / 10,
-      wind:  Math.round(d.daily.windspeed_10m_max[0]),
-      wmo:   d.daily.weathercode[0],
-    },
-    hourly: {
-      times:    d.hourly.time,
-      temp:     d.hourly.temperature_2m,
-      apparent: d.hourly.apparent_temperature,
-      prob:     d.hourly.precipitation_probability,
-      wmo:      d.hourly.weathercode,
-      wind:     d.hourly.windspeed_10m,
-    }
-  };
+function wxHour(hourly,ts){
+  var h=parseInt(ts.split(':')[0],10),idx=-1;
+  for(var i=0;i<hourly.times.length;i++){if(new Date(hourly.times[i]).getHours()===h){idx=i;break;}}
+  if(idx<0)return null;
+  return{temp:Math.round(hourly.temp[idx]),apparent:Math.round(hourly.apparent[idx]),prob:hourly.prob[idx]||0,wmo:hourly.wmo[idx]};
 }
-
-function getHourData(hourly, timeStr) {
-  // timeStr = "HH:MM", find closest hour in hourly.times
-  const [h] = timeStr.split(':').map(Number);
-  const idx = hourly.times.findIndex(t => {
-    const th = new Date(t).getHours();
-    return th === h;
-  });
-  if (idx < 0) return null;
-  return {
-    temp:     Math.round(hourly.temp[idx]),
-    apparent: Math.round(hourly.apparent[idx]),
-    prob:     hourly.prob[idx] || 0,
-    wmo:      hourly.wmo[idx],
-    wind:     Math.round(hourly.wind[idx]),
-  };
-}
-
-function loadCache() {
-  try { return JSON.parse(localStorage.getItem(CACHE_KEY)) || {}; } catch { return {}; }
-}
-function saveCache(data) {
-  try { localStorage.setItem(CACHE_KEY, JSON.stringify(data)); } catch {}
-}
-
-function renderWidget(dayNum, wxData, updatedAt, loading=false) {
-  const el = document.getElementById('wx-day-' + dayNum);
-  if (!el) return;
-  const d = WX_DAYS.find(x => x.day === dayNum);
-
-  if (loading) {
-    el.className = 'weather-widget loading';
-    el.innerHTML = '<div class="ww-error">⏳ Cargando previsión meteorológica...</div>';
-    return;
-  }
-  if (!wxData) {
-    el.className = 'weather-widget';
-    el.innerHTML = '<div class="ww-error">⚠️ Previsión no disponible (sin conexión)</div>';
-    return;
-  }
-
-  const daily = wxData.daily;
-  const hourly = wxData.hourly;
-  const { icon, desc, cls } = wmoInfo(daily.wmo);
-  const { icon: ci, rec } = clothingRec(daily.tmax, daily.tmin, daily.precip, daily.wind);
-  const mins = Math.round((Date.now() - updatedAt) / 60000);
-  const ago = mins < 60 ? `hace ${mins} min` : `hace ${Math.round(mins/60)}h`;
-
-  // Generar filas por parada
-  let stopRows = '';
-  if (hourly && d.stops) {
-    for (const stop of d.stops) {
-      const hd = getHourData(hourly, stop.time);
-      if (!hd) continue;
-      const wi = wmoInfo(hd.wmo);
-      const isRainy = hd.prob > 30;
-      const isHot   = hd.temp >= 22;
-      const rowCls  = isRainy ? 'rainy' : (isHot ? 'hot' : '');
-      const precipBadge = hd.prob > 15
-        ? `<span class="ww-stop-precip">💧${hd.prob}%</span>`
-        : `<span class="ww-stop-precip"></span>`;
-      stopRows += `
-        <div class="ww-stop-row ${rowCls}">
-          <span class="ww-stop-time">${stop.time}</span>
-          <span class="ww-stop-icon">${wi.icon}</span>
-          <span class="ww-stop-temp">${hd.temp}°<span class="ww-apparent">${hd.apparent !== hd.temp ? ` (s.${hd.apparent}°)` : ''}</span></span>
-          ${precipBadge}
-          <span class="ww-stop-name">${stop.name}</span>
-        </div>`;
+function wxLC(){try{return JSON.parse(localStorage.getItem(WX_KEY))||{};}catch(e){return{};}}
+function wxSC(d){try{localStorage.setItem(WX_KEY,JSON.stringify(d));}catch(e){}}
+function wxRender(n,wx,ts,loading){
+  var el=document.getElementById('wx-day-'+n);
+  if(!el)return;
+  if(loading){el.className='weather-widget';el.innerHTML='<div class="ww-error">Cargando...</div>';return;}
+  if(!wx){el.className='weather-widget';el.innerHTML='<div class="ww-error">Sin conexion</div>';return;}
+  var d=null;for(var i=0;i<WX_DATA.length;i++){if(WX_DATA[i].day===n){d=WX_DATA[i];break;}}
+  var wi=wmoI(wx.daily.wmo),cl=wxC(wx.daily.tmax,wx.daily.tmin,wx.daily.precip,wx.daily.wind);
+  var mins=Math.round((Date.now()-ts)/60000),ago=mins<60?mins+'min':Math.round(mins/60)+'h';
+  var rows='';
+  if(wx.hourly&&d&&d.stops){
+    for(var j=0;j<d.stops.length;j++){
+      var s=d.stops[j],h=wxHour(wx.hourly,s.time);if(!h)continue;
+      var sw=wmoI(h.wmo),rc=h.prob>30?'rainy':h.temp>=22?'hot':'';
+      var pr=h.prob>15?'<span class="ww-stop-precip">'+h.prob+'%</span>':'<span class="ww-stop-precip"></span>';
+      var ap=h.apparent!==h.temp?'<span class="ww-apparent">(s.'+h.apparent+')  </span>':'';
+      rows+='<div class="ww-stop-row '+rc+'"><span class="ww-stop-time">'+s.time+'</span><span class="ww-stop-icon">'+sw.i+'</span><span class="ww-stop-temp">'+h.temp+ap+'</span>'+pr+'<span class="ww-stop-name">'+s.name+'</span></div>';
     }
   }
-
-  el.className = `weather-widget ${cls}`;
-  el.innerHTML = `
-    <div class="ww-top">
-      <div class="ww-main">
-        <div class="ww-icon">${icon}</div>
-        <div>
-          <div class="ww-desc">${desc} &nbsp;·&nbsp; ${daily.tmax}° / ${daily.tmin}°C</div>
-          <div class="ww-city">${d.city} · 💧${daily.precip}mm · 💨${daily.wind}km/h</div>
-        </div>
-      </div>
-      <div class="ww-updated">
-        <span>⚡ ${ago}</span>
-        <button class="ww-refresh" onclick="refreshWeather(${dayNum})" title="Actualizar">↻</button>
-      </div>
-    </div>
-    <div class="ww-clothes"><span class="ww-clothes-icon">${ci}</span><span>${rec}</span></div>
-    ${stopRows ? `<div class="ww-hourly">
-      <div class="ww-hourly-title">Previsión por parada</div>
-      <div class="ww-hourly-list">${stopRows}</div>
-    </div>` : ''}
-  `;
+  el.className='weather-widget '+wi.cls;
+  el.innerHTML='<div class="ww-top"><div class="ww-main"><div class="ww-icon">'+wi.i+'</div><div><div class="ww-desc">'+wi.d+' '+wx.daily.tmax+'/'+wx.daily.tmin+'C</div><div class="ww-city">'+(d?d.city:'')+' '+wx.daily.precip+'mm '+wx.daily.wind+'km/h</div></div></div><div class="ww-updated"><span>'+ago+'</span><button class="ww-refresh" onclick="wxRefresh('+n+')">R</button></div></div><div class="ww-clothes"><span>'+cl.icon+'</span><span>'+cl.rec+'</span></div>'+(rows?'<div><div class="ww-hourly-title">Prevision por parada</div>'+rows+'</div>':'');
 }
-
-window.refreshWeather = async function(dayNum) {
-  const btn = document.querySelector(`#wx-day-${dayNum} .ww-refresh`);
-  if (btn) btn.classList.add('spinning');
-  const d = WX_DAYS.find(x => x.day === dayNum);
-  try {
-    const wx = await fetchWeatherHourly(d.lat, d.lon, d.date, d.tz);
-    const cache = loadCache();
-    const now = Date.now();
-    cache[dayNum] = { wx, ts: now };
-    saveCache(cache);
-    renderWidget(dayNum, wx, now);
-  } catch(e) {
-    const cache = loadCache();
-    if (cache[dayNum]) renderWidget(dayNum, cache[dayNum].wx, cache[dayNum].ts);
-    else renderWidget(dayNum, null, 0);
-  }
+async function wxFetch(lat,lon,date,tz){
+  var url='https://api.open-meteo.com/v1/forecast?latitude='+lat+'&longitude='+lon+'&hourly=temperature_2m,apparent_temperature,precipitation_probability,weathercode,windspeed_10m&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,windspeed_10m_max,weathercode&timezone='+encodeURIComponent(tz)+'&start_date='+date+'&end_date='+date+'&models=best_match';
+  var r=await fetch(url);if(!r.ok)throw new Error(r.status);
+  var d=await r.json();
+  return{daily:{tmax:Math.round(d.daily.temperature_2m_max[0]),tmin:Math.round(d.daily.temperature_2m_min[0]),precip:Math.round((d.daily.precipitation_sum[0]||0)*10)/10,wind:Math.round(d.daily.windspeed_10m_max[0]),wmo:d.daily.weathercode[0]},hourly:{times:d.hourly.time,temp:d.hourly.temperature_2m,apparent:d.hourly.apparent_temperature,prob:d.hourly.precipitation_probability,wmo:d.hourly.weathercode}};
+}
+window.wxRefresh=async function(n){
+  var btn=document.querySelector('#wx-day-'+n+' .ww-refresh');
+  if(btn)btn.classList.add('spinning');
+  var d=null;for(var i=0;i<WX_DATA.length;i++){if(WX_DATA[i].day===n){d=WX_DATA[i];break;}}
+  if(!d)return;
+  try{var wx=await wxFetch(d.lat,d.lon,d.date,d.tz);var c=wxLC();c[n]={wx:wx,ts:Date.now()};wxSC(c);wxRender(n,wx,Date.now());}
+  catch(e){var c=wxLC();if(c[n])wxRender(n,c[n].wx,c[n].ts);else wxRender(n,null,0);}
 };
-
-async function initWeather() {
-  const cache = loadCache();
-  const now = Date.now();
-  for (const d of WX_DAYS) {
-    const cached = cache[d.day];
-    const stale = !cached || (now - cached.ts) > CACHE_TTL;
-    if (cached) renderWidget(d.day, cached.wx, cached.ts);
-    else renderWidget(d.day, null, 0, true);
-    if (stale) {
-      try {
-        const wx = await fetchWeatherHourly(d.lat, d.lon, d.date, d.tz);
-        cache[d.day] = { wx, ts: now };
-        saveCache(cache);
-        renderWidget(d.day, wx, now);
-      } catch(e) {
-        if (!cached) renderWidget(d.day, null, 0);
-      }
-      await new Promise(r => setTimeout(r, 300));
+async function wxInit(){
+  var cache=wxLC(),now=Date.now();
+  for(var i=0;i<WX_DATA.length;i++){
+    var d=WX_DATA[i],cached=cache[d.day],stale=!cached||(now-cached.ts)>WX_TTL;
+    if(cached)wxRender(d.day,cached.wx,cached.ts);else wxRender(d.day,null,0,true);
+    if(stale){
+      try{var wx=await wxFetch(d.lat,d.lon,d.date,d.tz);cache[d.day]={wx:wx,ts:now};wxSC(cache);wxRender(d.day,wx,now);}
+      catch(e){if(!cached)wxRender(d.day,null,0);}
+      await new Promise(function(r){setTimeout(r,400);});
     }
   }
 }
-
-document.addEventListener('DOMContentLoaded', initWeather);
+document.addEventListener('DOMContentLoaded',function(){wxInit();});
 </script>
 
 </body>
