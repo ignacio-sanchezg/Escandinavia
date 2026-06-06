@@ -644,6 +644,103 @@ nav::-webkit-scrollbar { display: none; }
   background: var(--stone);
 }
 
+
+/* ── WEATHER WIDGET ── */
+.weather-widget {
+  background: white;
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid var(--blue-light);
+  position: relative;
+}
+.weather-widget.sunny   { border-left-color: #f59e0b; }
+.weather-widget.rainy   { border-left-color: #3b82f6; }
+.weather-widget.cloudy  { border-left-color: #6b7280; }
+.weather-widget.storm   { border-left-color: #7c3aed; }
+.weather-widget.loading { opacity: .6; }
+
+.ww-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.ww-main {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.ww-icon { font-size: 28px; line-height: 1; }
+.ww-desc {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.ww-city {
+  font-size: 11px;
+  color: var(--gray-500);
+  margin-top: 1px;
+}
+.ww-updated {
+  font-size: 10px;
+  color: var(--gray-500);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.ww-refresh {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  color: var(--blue-light);
+  padding: 0 2px;
+  opacity: .7;
+  transition: opacity .15s, transform .3s;
+}
+.ww-refresh:hover { opacity: 1; }
+.ww-refresh.spinning { animation: spin .8s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.ww-stats {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.ww-stat {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--gray-700);
+}
+.ww-stat-icon { font-size: 14px; }
+.ww-stat-val { font-weight: 600; }
+
+.ww-clothes {
+  background: var(--stone);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 13px;
+  color: var(--gray-700);
+  line-height: 1.4;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.ww-clothes-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+.ww-error {
+  font-size: 12px;
+  color: var(--gray-500);
+  font-style: italic;
+  padding: 6px 0;
+}
+
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
@@ -976,6 +1073,8 @@ nav::-webkit-scrollbar { display: none; }
       <div class="day-title">Llegada · Indre By clásico</div>
       <div class="day-sleep">🌙 Dormir en <span class="day-hotel-badge">Go Hotel City</span></div>
     </div>
+    
+    <div id="wx-day-1" class="weather-widget loading"><div class="ww-error">⏳ Cargando previsión...</div></div>
     <div id="map-day-1" class="day-map"></div>
     <div id="photos-day-1" class="photo-strip"></div>
     <div class="timeline">
@@ -1034,6 +1133,8 @@ nav::-webkit-scrollbar { display: none; }
       <div class="day-title">Centro histórico · Castillos y diseño</div>
       <div class="day-sleep">🌙 Dormir en <span class="day-hotel-badge">Go Hotel City</span></div>
     </div>
+    
+    <div id="wx-day-2" class="weather-widget loading"><div class="ww-error">⏳ Cargando previsión...</div></div>
     <div id="map-day-2" class="day-map"></div>
     <div id="photos-day-2" class="photo-strip"></div>
     <div class="timeline">
@@ -1083,6 +1184,8 @@ nav::-webkit-scrollbar { display: none; }
       <div class="day-sleep">🌙 Dormir en <span class="day-hotel-badge">Go Hotel City</span></div>
     </div>
     <div class="guide-alert">🚗 Recoger coche en CPH Car Rental Centre · Terminal Bus desde T3 · Europcar · Toyota Yaris Cross automático</div>
+    
+    <div id="wx-day-3" class="weather-widget loading"><div class="ww-error">⏳ Cargando previsión...</div></div>
     <div id="map-day-3" class="day-map"></div>
     <div id="photos-day-3" class="photo-strip"></div>
     <div class="timeline">
@@ -1127,6 +1230,8 @@ nav::-webkit-scrollbar { display: none; }
       <div class="day-sleep">🌙 Dormir en <span class="day-hotel-badge">Good Morning Arlanda</span></div>
     </div>
     <div class="guide-tip">✅ Maletas en Go Hotel City (consigna gratis confirmada). Recogerlas antes de las 19:00.</div>
+    
+    <div id="wx-day-4" class="weather-widget loading"><div class="ww-error">⏳ Cargando previsión...</div></div>
     <div id="map-day-4" class="day-map"></div>
     <div id="photos-day-4" class="photo-strip"></div>
     <div class="timeline">
@@ -1190,6 +1295,8 @@ nav::-webkit-scrollbar { display: none; }
       <div class="day-title">Transición · Gamla Stan · Söder</div>
       <div class="day-sleep">🌙 Dormir en <span class="day-hotel-badge">voco Stockholm Kista</span></div>
     </div>
+    
+    <div id="wx-day-5" class="weather-widget loading"><div class="ww-error">⏳ Cargando previsión...</div></div>
     <div id="map-day-5" class="day-map"></div>
     <div id="photos-day-5" class="photo-strip"></div>
     <div class="timeline">
@@ -1268,6 +1375,8 @@ nav::-webkit-scrollbar { display: none; }
       <div class="day-sleep">🌙 Dormir en <span class="day-hotel-badge">voco Stockholm Kista</span></div>
     </div>
     <div class="guide-alert">⚠️ Domingo noche: el metro NO funciona 24h. Último servicio ~01:00. No quedarse más tarde.</div>
+    
+    <div id="wx-day-6" class="weather-widget loading"><div class="ww-error">⏳ Cargando previsión...</div></div>
     <div id="map-day-6" class="day-map"></div>
     <div id="photos-day-6" class="photo-strip"></div>
     <div class="timeline">
@@ -1325,6 +1434,8 @@ nav::-webkit-scrollbar { display: none; }
       <div class="day-title">Hornstull · Vuelta a casa</div>
       <div class="day-sleep">✈ Vuelo de regreso a Barcelona</div>
     </div>
+    
+    <div id="wx-day-7" class="weather-widget loading"><div class="ww-error">⏳ Cargando previsión...</div></div>
     <div id="map-day-7" class="day-map"></div>
     <div id="photos-day-7" class="photo-strip"></div>
     <div class="timeline">
@@ -1898,6 +2009,183 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => { initMap(d1); loadPhotos(d1); }, 200);
   }
 });
+</script>
+
+
+<script>
+// ── DATOS DE DÍAS Y COORDENADAS ──────────────────────────────────────────
+const WX_DAYS = [
+  { day: 1, date: '2026-06-09', lat: 55.6761, lon: 12.5683, city: 'Copenhague',   tz: 'Europe/Copenhagen' },
+  { day: 2, date: '2026-06-10', lat: 55.6761, lon: 12.5683, city: 'Copenhague',   tz: 'Europe/Copenhagen' },
+  { day: 3, date: '2026-06-11', lat: 55.9678, lon: 12.5432, city: 'Riviera danesa (Humlebæk)', tz: 'Europe/Copenhagen' },
+  { day: 4, date: '2026-06-12', lat: 55.6761, lon: 12.5683, city: 'Copenhague → Estocolmo', tz: 'Europe/Copenhagen' },
+  { day: 5, date: '2026-06-13', lat: 59.3293, lon: 18.0686, city: 'Estocolmo',    tz: 'Europe/Stockholm'  },
+  { day: 6, date: '2026-06-14', lat: 59.3293, lon: 18.0686, city: 'Estocolmo',    tz: 'Europe/Stockholm'  },
+  { day: 7, date: '2026-06-15', lat: 59.3293, lon: 18.0686, city: 'Estocolmo',    tz: 'Europe/Stockholm'  },
+];
+
+const CACHE_KEY = 'wxdata_escandinavia_v2';
+const CACHE_TTL = 12 * 60 * 60 * 1000; // 12h
+
+// ── WMO weather code → emoji + descripción + clase ──────────────────────
+function wmoInfo(code) {
+  if (code === 0) return { icon: '☀️', desc: 'Despejado',         cls: 'sunny'  };
+  if (code <= 2)  return { icon: '🌤', desc: 'Poco nublado',      cls: 'sunny'  };
+  if (code === 3) return { icon: '☁️', desc: 'Nublado',           cls: 'cloudy' };
+  if (code <= 48) return { icon: '🌫', desc: 'Niebla',            cls: 'cloudy' };
+  if (code <= 55) return { icon: '🌦', desc: 'Llovizna',          cls: 'rainy'  };
+  if (code <= 65) return { icon: '🌧', desc: 'Lluvia',            cls: 'rainy'  };
+  if (code <= 77) return { icon: '❄️', desc: 'Nieve',             cls: 'cloudy' };
+  if (code <= 82) return { icon: '🌦', desc: 'Chubascos',         cls: 'rainy'  };
+  if (code <= 94) return { icon: '🌨', desc: 'Granizo',           cls: 'cloudy' };
+  return                   { icon: '⛈', desc: 'Tormenta eléctrica', cls: 'storm' };
+}
+
+// ── Recomendación de ropa ────────────────────────────────────────────────
+function clothingRec(tmax, tmin, precip, wind) {
+  const tmid = (tmax + tmin) / 2;
+  const rainy = precip > 3;
+  const windy = wind > 25;
+  let rec = '';
+  let icon = '👕';
+
+  if (tmid >= 22) {
+    icon = '🩳'; rec = 'Calor nórdico. Ropa ligera: camiseta y pantalón corto o fino.';
+  } else if (tmid >= 16) {
+    icon = '👕'; rec = 'Temperatura agradable. Camiseta + chaqueta ligera por si refresca por la noche.';
+  } else if (tmid >= 10) {
+    icon = '🧥'; rec = 'Fresco típico de junio escandinavo. Jeans, jersey y chaqueta de abrigo.';
+  } else {
+    icon = '🧣'; rec = 'Frío. Abrigo, bufanda y capas. Infrecuente en junio pero posible.';
+  }
+  if (rainy)  rec += ' 🌂 Lleva chubasquero o paraguas — hay probabilidad de lluvia.';
+  if (windy)  rec += ' 💨 Viento considerable: lleva cortavientos.';
+  if (!rainy && tmid >= 16) rec += ' 🕶 Habrá sol: protector solar y gafas.';
+  return { icon, rec };
+}
+
+// ── Fetch de Open-Meteo (DMI + SMHI + ECMWF) ────────────────────────────
+async function fetchWeather(lat, lon, date, tz) {
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}` +
+    `&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,windspeed_10m_max,weathercode,precipitation_probability_max` +
+    `&timezone=${tz}&start_date=${date}&end_date=${date}&models=best_match`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  const d = await res.json();
+  return {
+    tmax:   Math.round(d.daily.temperature_2m_max[0]),
+    tmin:   Math.round(d.daily.temperature_2m_min[0]),
+    precip: Math.round(d.daily.precipitation_sum[0] * 10) / 10,
+    wind:   Math.round(d.daily.windspeed_10m_max[0]),
+    wmo:    d.daily.weathercode[0],
+    prob:   d.daily.precipitation_probability_max[0],
+  };
+}
+
+// ── Cargar/guardar caché ─────────────────────────────────────────────────
+function loadCache() {
+  try { return JSON.parse(localStorage.getItem(CACHE_KEY)) || {}; } catch { return {}; }
+}
+function saveCache(data) {
+  try { localStorage.setItem(CACHE_KEY, JSON.stringify(data)); } catch {}
+}
+
+// ── Renderizar el widget ─────────────────────────────────────────────────
+function renderWidget(dayNum, wxData, updatedAt, loading=false) {
+  const el = document.getElementById('wx-day-' + dayNum);
+  if (!el) return;
+  const d = WX_DAYS.find(x => x.day === dayNum);
+
+  if (loading) {
+    el.className = 'weather-widget loading';
+    el.innerHTML = `<div class="ww-error">⏳ Cargando previsión meteorológica...</div>`;
+    return;
+  }
+  if (!wxData) {
+    el.className = 'weather-widget';
+    el.innerHTML = `<div class="ww-error">⚠️ Previsión no disponible (sin conexión)</div>`;
+    return;
+  }
+
+  const { icon, desc, cls } = wmoInfo(wxData.wmo);
+  const { icon: ci, rec } = clothingRec(wxData.tmax, wxData.tmin, wxData.precip, wxData.wind);
+  const mins = Math.round((Date.now() - updatedAt) / 60000);
+  const ago = mins < 60 ? `hace ${mins} min` : `hace ${Math.round(mins/60)}h`;
+
+  el.className = `weather-widget ${cls}`;
+  el.innerHTML = `
+    <div class="ww-top">
+      <div class="ww-main">
+        <div class="ww-icon">${icon}</div>
+        <div>
+          <div class="ww-desc">${desc}</div>
+          <div class="ww-city">${d.city}</div>
+        </div>
+      </div>
+      <div class="ww-updated">
+        <span>⚡ ${ago}</span>
+        <button class="ww-refresh" onclick="refreshWeather(${dayNum})" title="Actualizar">↻</button>
+      </div>
+    </div>
+    <div class="ww-stats">
+      <div class="ww-stat"><span class="ww-stat-icon">🌡</span><span class="ww-stat-val">${wxData.tmax}° / ${wxData.tmin}°C</span></div>
+      <div class="ww-stat"><span class="ww-stat-icon">💧</span><span class="ww-stat-val">${wxData.precip} mm</span>${wxData.prob > 0 ? `<span style="font-size:11px;color:var(--gray-500)">&nbsp;(${wxData.prob}%)</span>` : ''}</div>
+      <div class="ww-stat"><span class="ww-stat-icon">💨</span><span class="ww-stat-val">${wxData.wind} km/h</span></div>
+    </div>
+    <div class="ww-clothes"><span class="ww-clothes-icon">${ci}</span><span>${rec}</span></div>
+  `;
+}
+
+// ── Actualizar un día concreto (botón ↻) ─────────────────────────────────
+window.refreshWeather = async function(dayNum) {
+  const btn = document.querySelector(`#wx-day-${dayNum} .ww-refresh`);
+  if (btn) btn.classList.add('spinning');
+  const d = WX_DAYS.find(x => x.day === dayNum);
+  try {
+    const wx = await fetchWeather(d.lat, d.lon, d.date, d.tz);
+    const cache = loadCache();
+    const now = Date.now();
+    cache[dayNum] = { wx, ts: now };
+    saveCache(cache);
+    renderWidget(dayNum, wx, now);
+  } catch (e) {
+    const cache = loadCache();
+    if (cache[dayNum]) renderWidget(dayNum, cache[dayNum].wx, cache[dayNum].ts);
+    else renderWidget(dayNum, null, 0);
+  }
+};
+
+// ── Inicializar todos los días ────────────────────────────────────────────
+async function initWeather() {
+  const cache = loadCache();
+  const now = Date.now();
+
+  for (const d of WX_DAYS) {
+    const cached = cache[d.day];
+    const stale = !cached || (now - cached.ts) > CACHE_TTL;
+
+    // Renderizar inmediatamente con caché si existe
+    if (cached) renderWidget(d.day, cached.wx, cached.ts);
+    else renderWidget(d.day, null, 0, true);
+
+    // Actualizar si caducado o sin caché
+    if (stale) {
+      try {
+        const wx = await fetchWeather(d.lat, d.lon, d.date, d.tz);
+        cache[d.day] = { wx, ts: now };
+        saveCache(cache);
+        renderWidget(d.day, wx, now);
+      } catch (e) {
+        if (!cached) renderWidget(d.day, null, 0);
+      }
+      // Pequeña pausa para no saturar la API
+      await new Promise(r => setTimeout(r, 300));
+    }
+  }
+}
+
+// Arrancar cuando el DOM esté listo
+document.addEventListener('DOMContentLoaded', initWeather);
 </script>
 
 </body>
