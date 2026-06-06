@@ -2049,9 +2049,9 @@ function renderLegend(d) {
   }).join('');
 }
 
-function initMap(d) {
+function _initMapReal(d) {
   const el = document.getElementById('map-day-' + d.day);
-  if (!el || el._leaflet_id) return;
+  if (!el) return;
   const map = L.map(el, { zoomControl: false, attributionControl: false })
     .setView(d.center, d.zoom);
   L.tileLayer(MAP_TILE, { attribution: TILE_ATTR }).addTo(map);
@@ -2091,33 +2091,63 @@ async function loadPhotos(d) {
   }
 }
 
+// Almacenar instancias de mapa para poder llamar invalidateSize()
+const _mapInstances = {};
+
+// initMap: guarda la instancia, llama invalidateSize si ya existe
+function ensureMap(d) {
+  const el = document.getElementById('map-day-' + d.day);
+  if (!el) return;
+  if (_mapInstances[d.day]) {
+    // Ya creado: solo refrescar tamaño
+    _mapInstances[d.day].invalidateSize();
+    return;
+  }
+  // Crear mapa nuevo
+  const map = L.map(el, { zoomControl: false, attributionControl: false })
+    .setView(d.center, d.zoom);
+  L.tileLayer(MAP_TILE, { attribution: TILE_ATTR }).addTo(map);
+  L.control.zoom({ position: 'bottomright' }).addTo(map);
+  const latlngs = d.stops.map(s => [s.lat, s.lng]);
+  L.polyline(latlngs, { color: COLOR_ROUTE, weight: 3, opacity: .8, dashArray: '6 4' }).addTo(map);
+  d.stops.forEach((s, i) => {
+    const color = i === 0 ? COLOR_START : (i === d.stops.length - 1 ? COLOR_END : COLOR_MID);
+    L.marker([s.lat, s.lng], { icon: makeIcon(color, i + 1) })
+      .bindPopup(`<strong>${s.n}</strong>`)
+      .addTo(map);
+  });
+  _mapInstances[d.day] = map;
+  renderLegend(d);
+  // Esperar un tick y refrescar tamaño por si el contenedor aún tenía dimensiones 0
+  setTimeout(() => map.invalidateSize(), 50);
+}
+
 // Activar mapa y fotos cuando se muestra el día
 const _origShowDay = showDay;
 window.showDay = function(n) {
   _origShowDay(n);
   const d = DAYS_DATA.find(x => x.day === n);
   if (d) {
-    setTimeout(() => { initMap(d); loadPhotos(d); }, 50);
+    setTimeout(() => { ensureMap(d); loadPhotos(d); }, 80);
   }
 };
 
-// Inicializar día 1 al cargar la sección Días
+// Inicializar mapa del día activo cuando se abre la sección Días
 const _origShowSection = showSection;
 window.showSection = function(id) {
   _origShowSection(id);
   if (id === 'dias') {
-    const d = DAYS_DATA.find(x => x.day === 1);
-    if (d) setTimeout(() => { initMap(d); loadPhotos(d); }, 100);
+    // Encontrar qué día está activo en este momento
+    const activeBtn = [...document.querySelectorAll('.day-btn')].findIndex(b => b.classList.contains('active'));
+    const dayNum = activeBtn >= 0 ? activeBtn + 1 : 1;
+    const d = DAYS_DATA.find(x => x.day === dayNum);
+    if (d) setTimeout(() => { ensureMap(d); loadPhotos(d); }, 120);
   }
 };
 
-// Si el usuario llega directo a la sección Días (estado inicial), inicializar día 1
-document.addEventListener('DOMContentLoaded', () => {
-  const d1 = DAYS_DATA.find(x => x.day === 1);
-  if (d1 && document.getElementById('day-1')?.classList.contains('active')) {
-    setTimeout(() => { initMap(d1); loadPhotos(d1); }, 200);
-  }
-});
+// NO inicializar en DOMContentLoaded porque la sección está oculta
+// Se inicializará la primera vez que el usuario abra la pestaña "Días"
+
 </script>
 
 
