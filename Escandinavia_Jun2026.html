@@ -2195,10 +2195,10 @@ function renderLegend(d) {
     const isLast  = i === d.stops.length - 1;
     const color   = isFirst ? '#2d7a4f' : (isLast ? '#e05a3a' : '#2d5282');
     const name    = s.n.replace(/ [🚗🏨🍽✈🌅🎫🔙⚓]/g, '').trim();
-    return \`<div class="map-legend-item">
+    return `<div class="map-legend-item">
       <div class="map-legend-dot" style="background:\${color}">\${i+1}</div>
       <span>\${name}</span>
-    </div>\`;
+    </div>`;
   }).join('');
 }
 
