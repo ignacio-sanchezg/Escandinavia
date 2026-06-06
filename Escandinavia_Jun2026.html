@@ -741,6 +741,38 @@ nav::-webkit-scrollbar { display: none; }
   padding: 6px 0;
 }
 
+
+.map-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: -8px;
+  margin-bottom: 14px;
+  padding: 0 2px;
+}
+.map-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: white;
+  border-radius: 20px;
+  padding: 4px 10px 4px 5px;
+  font-size: 12px;
+  color: var(--gray-700);
+  box-shadow: var(--shadow-sm);
+  white-space: nowrap;
+}
+.map-legend-dot {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  color: white;
+  flex-shrink: 0;
+  border: 1.5px solid rgba(255,255,255,.6);
+}
+
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
@@ -1076,6 +1108,7 @@ nav::-webkit-scrollbar { display: none; }
     
     <div id="wx-day-1" class="weather-widget loading"><div class="ww-error">⏳ Cargando previsión...</div></div>
     <div id="map-day-1" class="day-map"></div>
+    <div id="legend-day-1" class="map-legend"></div>
     <div id="photos-day-1" class="photo-strip"></div>
     <div class="timeline">
       <div class="timeline-item confirmed">
@@ -1136,6 +1169,7 @@ nav::-webkit-scrollbar { display: none; }
     
     <div id="wx-day-2" class="weather-widget loading"><div class="ww-error">⏳ Cargando previsión...</div></div>
     <div id="map-day-2" class="day-map"></div>
+    <div id="legend-day-2" class="map-legend"></div>
     <div id="photos-day-2" class="photo-strip"></div>
     <div class="timeline">
       <div class="timeline-item">
@@ -1187,6 +1221,7 @@ nav::-webkit-scrollbar { display: none; }
     
     <div id="wx-day-3" class="weather-widget loading"><div class="ww-error">⏳ Cargando previsión...</div></div>
     <div id="map-day-3" class="day-map"></div>
+    <div id="legend-day-3" class="map-legend"></div>
     <div id="photos-day-3" class="photo-strip"></div>
     <div class="timeline">
       <div class="timeline-item confirmed">
@@ -1233,6 +1268,7 @@ nav::-webkit-scrollbar { display: none; }
     
     <div id="wx-day-4" class="weather-widget loading"><div class="ww-error">⏳ Cargando previsión...</div></div>
     <div id="map-day-4" class="day-map"></div>
+    <div id="legend-day-4" class="map-legend"></div>
     <div id="photos-day-4" class="photo-strip"></div>
     <div class="timeline">
       <div class="timeline-item">
@@ -1298,6 +1334,7 @@ nav::-webkit-scrollbar { display: none; }
     
     <div id="wx-day-5" class="weather-widget loading"><div class="ww-error">⏳ Cargando previsión...</div></div>
     <div id="map-day-5" class="day-map"></div>
+    <div id="legend-day-5" class="map-legend"></div>
     <div id="photos-day-5" class="photo-strip"></div>
     <div class="timeline">
       <div class="timeline-item">
@@ -1378,6 +1415,7 @@ nav::-webkit-scrollbar { display: none; }
     
     <div id="wx-day-6" class="weather-widget loading"><div class="ww-error">⏳ Cargando previsión...</div></div>
     <div id="map-day-6" class="day-map"></div>
+    <div id="legend-day-6" class="map-legend"></div>
     <div id="photos-day-6" class="photo-strip"></div>
     <div class="timeline">
       <div class="timeline-item warning">
@@ -1437,6 +1475,7 @@ nav::-webkit-scrollbar { display: none; }
     
     <div id="wx-day-7" class="weather-widget loading"><div class="ww-error">⏳ Cargando previsión...</div></div>
     <div id="map-day-7" class="day-map"></div>
+    <div id="legend-day-7" class="map-legend"></div>
     <div id="photos-day-7" class="photo-strip"></div>
     <div class="timeline">
       <div class="timeline-item">
@@ -1941,6 +1980,22 @@ function makeIcon(color, num) {
   });
 }
 
+function renderLegend(d) {
+  const el = document.getElementById('legend-day-' + d.day);
+  if (!el) return;
+  const colors = ['#2d7a4f','#2d5282','#2d5282','#2d5282','#2d5282','#2d5282','#2d5282','#2d5282','#2d5282','#2d5282','#e05a3a'];
+  el.innerHTML = d.stops.map((s, i) => {
+    const isFirst = i === 0;
+    const isLast  = i === d.stops.length - 1;
+    const color   = isFirst ? '#2d7a4f' : (isLast ? '#e05a3a' : '#2d5282');
+    const name    = s.n.replace(/ [🚗🏨🍽✈🌅🎫🔙⚓]/g, '').trim();
+    return \`<div class="map-legend-item">
+      <div class="map-legend-dot" style="background:\${color}">\${i+1}</div>
+      <span>\${name}</span>
+    </div>\`;
+  }).join('');
+}
+
 function initMap(d) {
   const el = document.getElementById('map-day-' + d.day);
   if (!el || el._leaflet_id) return;
@@ -1958,6 +2013,7 @@ function initMap(d) {
       .bindPopup(`<strong>${s.n}</strong>`)
       .addTo(map);
   });
+  renderLegend(d);
 }
 
 async function loadPhotos(d) {
