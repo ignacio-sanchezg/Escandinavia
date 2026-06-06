@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dinamarca & Suecia · Junio 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0f1e3a;
+  --navy-mid: #1a2f52;
+  --blue-light: #2d5282;
+  --gold: #e8a020;
+  --gold-light: #fef3d8;
+  --gold-pale: #fffaf0;
+  --coral: #e05a3a;
+  --coral-light: #fdf0ec;
+  --green: #2d7a4f;
+  --green-light: #edf7f1;
+  --sky: #3b82f6;
+  --sky-light: #eff6ff;
+  --white: #ffffff;
+  --off-white: #fafaf8;
+  --stone: #f4f1eb;
+  --gray-100: #f5f5f4;
+  --gray-200: #e7e5e4;
+  --gray-500: #78716c;
+  --gray-700: #44403c;
+  --gray-900: #1c1917;
+  --radius: 12px;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.08);
+  --shadow-md: 0 4px 16px rgba(0,0,0,.10);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,.14);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--off-white);
+  color: var(--gray-900);
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* ——— HERO ——— */
+.hero {
+  background: linear-gradient(160deg, var(--navy) 0%, var(--navy-mid) 50%, var(--blue-light) 100%);
+  color: white;
+  padding: 48px 24px 40px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.04);
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -40px;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(232,160,32,.08);
+}
+.hero-eyebrow {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 12px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 7vw, 44px);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+.hero-dates {
+  font-size: 15px;
+  color: rgba(255,255,255,.7);
+  margin-bottom: 24px;
+}
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+.pill {
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 500;
+  color: rgba(255,255,255,.9);
+  backdrop-filter: blur(4px);
+}
+.pill.gold { background: rgba(232,160,32,.25); border-color: rgba(232,160,32,.4); color: #ffd97d; }
+.hero-total {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+.hero-total-label { font-size: 12px; color: rgba(255,255,255,.5); }
+.hero-total-amount {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--gold);
+}
+.hero-total-sub { font-size: 11px; color: rgba(255,255,255,.4); }
+
+/* ——— NAV ——— */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--navy);
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+nav::-webkit-scrollbar { display: none; }
+.nav-inner {
+  display: flex;
+  white-space: nowrap;
+  padding: 0 12px;
+}
+.nav-btn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,.55);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  padding: 14px 14px;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all .2s;
+  white-space: nowrap;
+}
+.nav-btn.active, .nav-btn:hover {
+  color: white;
+  border-bottom-color: var(--gold);
+}
+
+/* ——— SECTIONS ——— */
+.section { display: none; padding: 20px 16px 40px; max-width: 680px; margin: 0 auto; }
+.section.active { display: block; }
+
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.section-sub {
+  font-size: 13px;
+  color: var(--gray-500);
+  margin-bottom: 24px;
+}
+
+/* ——— CARDS ——— */
+.card {
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.card-header {
+  padding: 16px 18px 12px;
+  border-bottom: 1px solid var(--gray-100);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.card-icon {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+.card-icon.navy { background: var(--navy); }
+.card-icon.gold { background: var(--gold-light); }
+.card-icon.green { background: var(--green-light); }
+.card-icon.coral { background: var(--coral-light); }
+.card-icon.sky { background: var(--sky-light); }
+
+.card-title { font-weight: 600; font-size: 14px; color: var(--navy); line-height: 1.2; }
+.card-subtitle { font-size: 12px; color: var(--gray-500); margin-top: 1px; }
+.card-body { padding: 14px 18px; }
+.card-footer { padding: 10px 18px; background: var(--stone); border-top: 1px solid var(--gray-200); }
+
+/* Badge CONFIRMADO */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  padding: 3px 8px;
+}
+.badge.confirmed { background: var(--green-light); color: var(--green); }
+.badge.pending { background: var(--coral-light); color: var(--coral); }
+.badge.info { background: var(--sky-light); color: var(--sky); }
+.badge.gold { background: var(--gold-light); color: #92600a; }
+
+/* ——— BOOKING ROWS ——— */
+.booking-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--gray-100);
+  gap: 12px;
+}
+.booking-row:last-child { border-bottom: none; }
+.booking-label { font-size: 12px; color: var(--gray-500); margin-bottom: 2px; }
+.booking-value { font-size: 14px; font-weight: 500; color: var(--gray-900); }
+.booking-mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+  background: var(--stone);
+  padding: 4px 10px;
+  border-radius: 6px;
+  letter-spacing: .05em;
+}
+
+/* ——— FLIGHT CARD ——— */
+.flight-route {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 0 8px;
+}
+.flight-airport {
+  text-align: center;
+  min-width: 54px;
+}
+.flight-code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--navy);
+}
+.flight-time {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--gray-700);
+  margin-top: 2px;
+}
+.flight-city { font-size: 10px; color: var(--gray-500); margin-top: 1px; }
+.flight-line {
+  flex: 1;
+  height: 1px;
+  background: var(--gray-200);
+  position: relative;
+}
+.flight-line::after {
+  content: '✈';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 0 4px;
+  font-size: 14px;
+  color: var(--gray-500);
+}
+.flight-meta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding-bottom: 4px;
+}
+.flight-meta-item { font-size: 12px; color: var(--gray-500); }
+.flight-meta-item span { color: var(--gray-900); font-weight: 500; }
+
+/* ——— DAYS ——— */
+.day-selector {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  scrollbar-width: none;
+  margin-bottom: 8px;
+}
+.day-selector::-webkit-scrollbar { display: none; }
+.day-btn {
+  flex-shrink: 0;
+  background: white;
+  border: 2px solid var(--gray-200);
+  border-radius: 10px;
+  padding: 10px 14px;
+  cursor: pointer;
+  text-align: center;
+  transition: all .2s;
+  min-width: 64px;
+}
+.day-btn.active {
+  background: var(--navy);
+  border-color: var(--navy);
+  color: white;
+}
+.day-btn-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  display: block;
+  line-height: 1;
+}
+.day-btn-label { font-size: 10px; margin-top: 2px; display: block; opacity: .7; }
+
+.day-content { display: none; }
+.day-content.active { display: block; }
+
+.day-header {
+  background: var(--navy);
+  color: white;
+  border-radius: var(--radius);
+  padding: 18px 18px 14px;
+  margin-bottom: 14px;
+}
+.day-date {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+.day-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+.day-sleep {
+  font-size: 12px;
+  color: rgba(255,255,255,.6);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.day-hotel-badge {
+  background: rgba(232,160,32,.2);
+  color: var(--gold);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* ——— TIMELINE ——— */
+.timeline { position: relative; padding-left: 20px; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 7px; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--gold), var(--blue-light));
+  border-radius: 2px;
+}
+.timeline-item {
+  position: relative;
+  padding: 0 0 16px 20px;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -14px; top: 6px;
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--gray-200);
+}
+.timeline-item.confirmed::before { border-color: var(--green); background: var(--green); }
+.timeline-item.critical::before { border-color: var(--gold); background: var(--gold); }
+.timeline-item.warning::before { border-color: var(--coral); background: var(--coral); }
+
+.tl-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--gold);
+  margin-bottom: 2px;
+}
+.tl-title { font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.3; }
+.tl-note { font-size: 12px; color: var(--gray-500); margin-top: 3px; line-height: 1.4; }
+.tl-badge { margin-top: 4px; }
+
+/* ——— PAYMENTS ——— */
+.payment-card {
+  background: white;
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  margin-bottom: 12px;
+  border-left: 4px solid var(--gray-200);
+  box-shadow: var(--shadow-sm);
+}
+.payment-card.revolut { border-left-color: var(--green); }
+.payment-card.visa { border-left-color: #1a56db; }
+.payment-card.never { border-left-color: var(--coral); }
+.payment-card-title { font-weight: 600; font-size: 15px; margin-bottom: 4px; }
+.payment-card-subtitle { font-size: 12px; color: var(--gray-500); margin-bottom: 10px; }
+.payment-rule {
+  font-size: 13px;
+  padding: 4px 0;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  border-bottom: 1px solid var(--gray-100);
+}
+.payment-rule:last-child { border-bottom: none; }
+.payment-icon { flex-shrink: 0; margin-top: 1px; }
+
+/* ——— CHECKLIST ——— */
+.checklist-group { margin-bottom: 20px; }
+.checklist-group-title {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--gray-500);
+  margin-bottom: 10px;
+  padding-left: 2px;
+}
+.check-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 11px 14px;
+  background: white;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: all .15s;
+  border: 1px solid transparent;
+}
+.check-item:hover { border-color: var(--gray-200); }
+.check-item.done { opacity: .55; }
+.check-item.done .ci-title { text-decoration: line-through; }
+.ci-box {
+  width: 20px; height: 20px;
+  border-radius: 5px;
+  border: 2px solid var(--gray-300, #d4d4d4);
+  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  transition: all .15s;
+  margin-top: 1px;
+}
+.check-item.done .ci-box {
+  background: var(--green);
+  border-color: var(--green);
+  color: white;
+}
+.ci-content { flex: 1; }
+.ci-title { font-size: 14px; font-weight: 500; color: var(--gray-900); line-height: 1.3; }
+.ci-sub { font-size: 12px; color: var(--gray-500); margin-top: 2px; }
+.ci-cost { font-family: 'JetBrains Mono', monospace; font-size: 12px; color: var(--navy); font-weight: 600; flex-shrink: 0; padding-top: 2px; }
+
+/* ——— GUIDES ——— */
+.guide-section { margin-bottom: 28px; }
+.guide-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--gold-light);
+}
+.guide-block {
+  background: white;
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  margin-bottom: 10px;
+  box-shadow: var(--shadow-sm);
+}
+.guide-block-title { font-weight: 600; font-size: 14px; color: var(--navy); margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.guide-step {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 5px 0;
+  font-size: 13px;
+  line-height: 1.4;
+  border-bottom: 1px solid var(--gray-100);
+}
+.guide-step:last-child { border-bottom: none; }
+.guide-step-num {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--navy);
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.guide-alert {
+  background: var(--coral-light);
+  border-left: 3px solid var(--coral);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--coral);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+.guide-tip {
+  background: var(--green-light);
+  border-left: 3px solid var(--green);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-size: 13px;
+  color: var(--green);
+  margin-bottom: 10px;
+}
+
+/* message template */
+.msg-template {
+  background: var(--stone);
+  border-radius: 8px;
+  padding: 14px 16px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--gray-700);
+  white-space: pre-wrap;
+  margin-top: 8px;
+}
+
+/* ——— TABLE ——— */
+.mini-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.mini-table th { background: var(--navy); color: white; padding: 8px 12px; text-align: left; font-weight: 600; font-size: 12px; }
+.mini-table td { padding: 8px 12px; border-bottom: 1px solid var(--gray-100); }
+.mini-table tr:last-child td { border-bottom: none; }
+.mini-table tr:nth-child(even) td { background: var(--gray-100); }
+
+/* ——— SUMMARY BAR ——— */
+.summary-bar {
+  background: var(--navy);
+  color: white;
+  border-radius: var(--radius);
+  padding: 16px 18px;
+  margin-bottom: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.sum-item-label { font-size: 11px; color: rgba(255,255,255,.5); margin-bottom: 2px; }
+.sum-item-value { font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 700; color: var(--gold); }
+.sum-item-sub { font-size: 11px; color: rgba(255,255,255,.4); }
+
+/* ——— MISC ——— */
+.divider { height: 1px; background: var(--gray-200); margin: 16px 0; }
+.small-label { font-size: 11px; color: var(--gray-500); text-transform: uppercase; letter-spacing: .08em; font-weight: 600; }
+
+@media (min-width: 680px) {
+  .section { padding: 28px 24px 60px; }
+  .hero { padding: 60px 40px 52px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Iñaki & Krystel · Guía de viaje</div>
+  <h1>Dinamarca<br>& Suecia</h1>
+  <div class="hero-dates">9 — 15 de junio de 2026 · 7 días · 6 noches</div>
+  <div class="hero-pills">
+    <span class="pill">✈ 3 vuelos</span>
+    <span class="pill">🏨 3 hoteles</span>
+    <span class="pill">🚗 Riviera danesa</span>
+    <span class="pill gold">🎫 Subway Tour 14 jun</span>
+  </div>
+  <div class="hero-total">
+    <div>
+      <div class="hero-total-label">Total confirmado y pagado</div>
+      <div class="hero-total-amount">2.603,72 €</div>
+    </div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showSection('reservas')">📋 Reservas</button>
+    <button class="nav-btn" onclick="showSection('dias')">📅 Días</button>
+    <button class="nav-btn" onclick="showSection('pagos')">💳 Pagos</button>
+    <button class="nav-btn" onclick="showSection('pendientes')">✅ Pendientes</button>
+    <button class="nav-btn" onclick="showSection('guias')">📖 Guías</button>
+  </div>
+</nav>
+
+<!-- ═══════════════ RESERVAS ═══════════════ -->
+<div id="section-reservas" class="section active">
+  <div class="section-title">Reservas confirmadas</div>
+  <div class="section-sub">Todo pagado y confirmado · 2.603,72€ total</div>
+
+  <div class="summary-bar">
+    <div>
+      <div class="sum-item-label">Vuelos</div>
+      <div class="sum-item-value">1.079,50€</div>
+      <div class="sum-item-sub">3 tramos</div>
+    </div>
+    <div>
+      <div class="sum-item-label">Hoteles</div>
+      <div class="sum-item-value">1.427,00€</div>
+      <div class="sum-item-sub">3 alojamientos · 6 noches</div>
+    </div>
+    <div>
+      <div class="sum-item-label">Coche</div>
+      <div class="sum-item-value">97,22€</div>
+      <div class="sum-item-sub">11 jun · seguro incluido</div>
+    </div>
+    <div>
+      <div class="sum-item-label">Actividades</div>
+      <div class="sum-item-value">Pagado ✓</div>
+      <div class="sum-item-sub">Subway Tour Sthlm</div>
+    </div>
+  </div>
+
+  <!-- VUELO 1 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon navy">✈</div>
+      <div>
+        <div class="card-title">Vuelo de ida</div>
+        <div class="card-subtitle">Mar 9 jun 2026 · Norwegian Air Sweden</div>
+      </div>
+      <span class="badge confirmed" style="margin-left:auto">✓ Confirmado</span>
+    </div>
+    <div class="card-body">
+      <div class="flight-route">
+        <div class="flight-airport">
+          <div class="flight-code">BCN</div>
+          <div class="flight-time">12:40</div>
+          <div class="flight-city">T2</div>
+        </div>
+        <div class="flight-line"></div>
+        <div class="flight-airport">
+          <div class="flight-code">CPH</div>
+          <div class="flight-time">15:35</div>
+          <div class="flight-city">T3</div>
+        </div>
+      </div>
+      <div class="flight-meta">
+        <div class="flight-meta-item">Vuelo <span>D8 3657</span></div>
+        <div class="flight-meta-item">Duración <span>2h 55min</span></div>
+        <div class="flight-meta-item">Avión <span>Boeing 737-800</span></div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <span class="booking-mono">XRTPUA</span>
+        <div style="text-align:right">
+          <div style="font-size:12px;color:var(--gray-500)">Total 2 personas</div>
+          <div style="font-weight:600;color:var(--navy)">281,20€ · LowFare+ · 1 maleta incluida</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VUELO 2 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon navy">✈</div>
+      <div>
+        <div class="card-title">Vuelo interno CPH→ARN</div>
+        <div class="card-subtitle">Vie 12 jun 2026 · SAS Scandinavian Airlines</div>
+      </div>
+      <span class="badge confirmed" style="margin-left:auto">✓ Confirmado</span>
+    </div>
+    <div class="card-body">
+      <div class="flight-route">
+        <div class="flight-airport">
+          <div class="flight-code">CPH</div>
+          <div class="flight-time">21:25</div>
+          <div class="flight-city">T3</div>
+        </div>
+        <div class="flight-line"></div>
+        <div class="flight-airport">
+          <div class="flight-code">ARN</div>
+          <div class="flight-time">22:35</div>
+          <div class="flight-city">T5</div>
+        </div>
+      </div>
+      <div class="flight-meta">
+        <div class="flight-meta-item">Vuelo <span>SK 1410</span></div>
+        <div class="flight-meta-item">Asientos <span>18E + 18F</span></div>
+        <div class="flight-meta-item">Avión <span>Airbus A320neo</span></div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <span class="booking-mono">XB6YN5</span>
+        <div style="text-align:right">
+          <div style="font-size:12px;color:var(--gray-500)">Total 2 personas</div>
+          <div style="font-weight:600;color:var(--navy)">236,82€ · Standard · 2 maletas incluidas</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- VUELO 3 -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon navy">✈</div>
+      <div>
+        <div class="card-title">Vuelo de vuelta</div>
+        <div class="card-subtitle">Lun 15 jun 2026 · Norwegian Air Sweden</div>
+      </div>
+      <span class="badge confirmed" style="margin-left:auto">✓ Confirmado</span>
+    </div>
+    <div class="card-body">
+      <div class="flight-route">
+        <div class="flight-airport">
+          <div class="flight-code">ARN</div>
+          <div class="flight-time">16:20</div>
+          <div class="flight-city">T5</div>
+        </div>
+        <div class="flight-line"></div>
+        <div class="flight-airport">
+          <div class="flight-code">BCN</div>
+          <div class="flight-time">19:45</div>
+          <div class="flight-city">T2</div>
+        </div>
+      </div>
+      <div class="flight-meta">
+        <div class="flight-meta-item">Vuelo <span>D8 4253</span></div>
+        <div class="flight-meta-item">Duración <span>3h 25min</span></div>
+        <div class="flight-meta-item">Avión <span>Boeing 737-800</span></div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <span class="booking-mono">XRUYR6</span>
+        <div style="text-align:right">
+          <div style="font-size:12px;color:var(--gray-500)">Total 2 personas</div>
+          <div style="font-weight:600;color:var(--navy)">561,48€ · LowFare+ · 1 maleta incluida</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOTEL CPH -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon gold">🏨</div>
+      <div>
+        <div class="card-title">Go Hotel City</div>
+        <div class="card-subtitle">Copenhague · 9-12 jun · 3 noches</div>
+      </div>
+      <span class="badge confirmed" style="margin-left:auto">✓ Confirmado</span>
+    </div>
+    <div class="card-body">
+      <div class="booking-row">
+        <div><div class="booking-label">Dirección</div><div class="booking-value">Amager Øst, Copenhague</div></div>
+      </div>
+      <div class="booking-row">
+        <div><div class="booking-label">Metro</div><div class="booking-value">M2 · Lergravsparken</div></div>
+        <div><div class="booking-label">Score</div><div class="booking-value">8.0 Booking</div></div>
+      </div>
+      <div class="booking-row">
+        <div><div class="booking-label">Consigna</div><div class="booking-value">✅ Gratis confirmada hasta vuelo ARN</div></div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:13px;color:var(--gray-500)">3 noches · 2 adultos</span>
+        <span style="font-weight:700;color:var(--navy);font-size:16px">911,00€</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOTEL ARLANDA -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon gold">🏨</div>
+      <div>
+        <div class="card-title">Good Morning Arlanda</div>
+        <div class="card-subtitle">Arlanda · 12-13 jun · 1 noche</div>
+      </div>
+      <span class="badge confirmed" style="margin-left:auto">✓ Confirmado</span>
+    </div>
+    <div class="card-body">
+      <div class="booking-row">
+        <div><div class="booking-label">Lanzadera</div><div class="booking-value">🚌 Gratis 24h desde terminal</div></div>
+        <div><div class="booking-label">Score</div><div class="booking-value">8.1 · 16.000 reseñas</div></div>
+      </div>
+      <div class="booking-row">
+        <div><div class="booking-label">Check-in</div><div class="booking-value">Recepción 24h · llegada ~23:30</div></div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:13px;color:var(--gray-500)">1 noche · desayuno + lanzadera</span>
+        <span style="font-weight:700;color:var(--navy);font-size:16px">121,00€</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- HOTEL KISTA -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon gold">🏨</div>
+      <div>
+        <div class="card-title">voco Stockholm Kista</div>
+        <div class="card-subtitle">Estocolmo · 13-15 jun · 2 noches</div>
+      </div>
+      <span class="badge confirmed" style="margin-left:auto">✓ Confirmado</span>
+    </div>
+    <div class="card-body">
+      <div class="booking-row">
+        <div><div class="booking-label">Metro</div><div class="booking-value">Azul T11 · 8 min a pie desde Helenelund</div></div>
+      </div>
+      <div class="booking-row">
+        <div><div class="booking-label">Servicios</div><div class="booking-value">4★ · Spa · Sauna · Piscina</div></div>
+        <div><div class="booking-label">Score</div><div class="booking-value">8.2 Booking</div></div>
+      </div>
+      <div class="booking-row">
+        <div><div class="booking-label">Sáb 13 mañana</div><div class="booking-value">Dejar maletas gratis desde 10:00</div></div>
+      </div>
+      <div class="booking-row">
+        <div><div class="booking-label">Check-in sáb</div><div class="booking-value">Recepción 24h · llegada ~22:30</div></div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span style="font-size:13px;color:var(--gray-500)">2 noches · IHG</span>
+        <span style="font-weight:700;color:var(--navy);font-size:16px">395,00€</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- COCHE -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon green">🚗</div>
+      <div>
+        <div class="card-title">Europcar · Toyota Yaris Cross</div>
+        <div class="card-subtitle">CPH Car Rental Centre · 11 jun · 09:00-23:00</div>
+      </div>
+      <span class="badge confirmed" style="margin-left:auto">✓ Confirmado</span>
+    </div>
+    <div class="card-body">
+      <div class="booking-row">
+        <div><div class="booking-label">Coche</div><div class="booking-value">Toyota Yaris Cross · Automático · 5 pax</div></div>
+      </div>
+      <div class="booking-row">
+        <div><div class="booking-label">Seguro</div><div class="booking-value">✅ Zurich Full Insurance EEA · sin franquicia</div></div>
+      </div>
+      <div class="booking-row">
+        <div><div class="booking-label">Devolución</div><div class="booking-value">23:00 · mismo CPH Car Rental Centre</div></div>
+      </div>
+      <div class="booking-row">
+        <div><div class="booking-label">Conductor</div><div class="booking-value">Ignacio Sánchez González · insago@gmail.com</div></div>
+      </div>
+      <div class="booking-row">
+        <div><div class="booking-label">Taquilla</div><div class="booking-value">Cancelación gratuita</div></div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:6px">
+        <div style="font-size:12px;color:var(--gray-500)">59,72€ alquiler + 37,50€ seguro Zurich</div>
+        <span style="font-weight:700;color:var(--navy);font-size:16px">97,22€</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUBWAY TOUR -->
+  <div class="card">
+    <div class="card-header">
+      <div class="card-icon sky">🎫</div>
+      <div>
+        <div class="card-title">Subway Art Tour · Estocolmo</div>
+        <div class="card-subtitle">Dom 14 jun · 17:00 · Plaza Sergel</div>
+      </div>
+      <span class="badge gold" style="margin-left:auto">Krystel</span>
+    </div>
+    <div class="card-body">
+      <div class="booking-row">
+        <div><div class="booking-label">Punto de encuentro</div><div class="booking-value">Sergels Torg (Plaza Sergel)</div></div>
+      </div>
+      <div class="booking-row">
+        <div><div class="booking-label">Aviso</div><div class="booking-value">Llegar 15 min antes · 17:00 en punto</div></div>
+      </div>
+    </div>
+    <div class="card-footer">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <span class="booking-mono">A38809069</span>
+        <span class="badge confirmed">✓ Pagado por Krystel</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ DÍAS ═══════════════ -->
+<div id="section-dias" class="section">
+  <div class="section-title">Plan día a día</div>
+  <div class="section-sub">Toca un día para ver el detalle</div>
+
+  <div class="day-selector">
+    <button class="day-btn active" onclick="showDay(1)"><span class="day-btn-num">1</span><span class="day-btn-label">Mar 9</span></button>
+    <button class="day-btn" onclick="showDay(2)"><span class="day-btn-num">2</span><span class="day-btn-label">Mié 10</span></button>
+    <button class="day-btn" onclick="showDay(3)"><span class="day-btn-num">3</span><span class="day-btn-label">Jue 11</span></button>
+    <button class="day-btn" onclick="showDay(4)"><span class="day-btn-num">4</span><span class="day-btn-label">Vie 12</span></button>
+    <button class="day-btn" onclick="showDay(5)"><span class="day-btn-num">5</span><span class="day-btn-label">Sáb 13</span></button>
+    <button class="day-btn" onclick="showDay(6)"><span class="day-btn-num">6</span><span class="day-btn-label">Dom 14</span></button>
+    <button class="day-btn" onclick="showDay(7)"><span class="day-btn-num">7</span><span class="day-btn-label">Lun 15</span></button>
+  </div>
+
+  <!-- DÍA 1 -->
+  <div id="day-1" class="day-content active">
+    <div class="day-header">
+      <div class="day-date">Martes 9 de junio</div>
+      <div class="day-title">Llegada · Indre By clásico</div>
+      <div class="day-sleep">🌙 Dormir en <span class="day-hotel-badge">Go Hotel City</span></div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item confirmed">
+        <div class="tl-time">12:40</div>
+        <div class="tl-title">✈ D8 3657 BCN → CPH</div>
+        <div class="tl-note">Salida T2 · Llegada T3 15:35 · Loc: XRTPUA</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">15:50</div>
+        <div class="tl-title">Metro M2 → hotel</div>
+        <div class="tl-note">Dirección Vanløse · 15 min · bajar Lergravsparken</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">16:30</div>
+        <div class="tl-title">Check-in Go Hotel City</div>
+        <div class="tl-note">Dejar maletas · café rápido</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-title">Nyhavn</div>
+        <div class="tl-note">Casitas de colores y barcos · la postal de Copenhague</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">17:30</div>
+        <div class="tl-title">Iglesia de Mármol</div>
+        <div class="tl-note">5 min andando · cúpula más grande de Escandinavia · gratis</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">17:45</div>
+        <div class="tl-title">Palacio de Amalienborg</div>
+        <div class="tl-note">Plaza octogonal con 4 palacios reales</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">18:00</div>
+        <div class="tl-title">Fuente de Gefion</div>
+        <div class="tl-note">Diosa arando con 4 bueyes · de paso a Kastellet</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">18:15</div>
+        <div class="tl-title">Kastellet</div>
+        <div class="tl-note">Fortaleza-estrella · molino · Memorial Anchor · gratis</div>
+      </div>
+      <div class="timeline-item critical">
+        <div class="tl-time">20:30</div>
+        <div class="tl-title">🍽 Cena: Gorilla</div>
+        <div class="tl-note">Flæsketorvet 100 · Vesterbro · RESERVAR 3-4 sem antes · restaurantgorilla.dk · à la carte · pedir terraza · cocina hasta las 00h</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DÍA 2 -->
+  <div id="day-2" class="day-content">
+    <div class="day-header">
+      <div class="day-date">Miércoles 10 de junio</div>
+      <div class="day-title">Centro histórico · Castillos y diseño</div>
+      <div class="day-sleep">🌙 Dormir en <span class="day-hotel-badge">Go Hotel City</span></div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tl-time">9:30</div>
+        <div class="tl-title">Castillo de Rosenborg</div>
+        <div class="tl-note">Metro a Nørreport · joyas de la Corona · ~140 DKK · COMPRAR ONLINE antes</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">11:30</div>
+        <div class="tl-title">Jardines del Rey</div>
+        <div class="tl-note">Parque más popular de la ciudad · gratis</div>
+      </div>
+      <div class="timeline-item critical">
+        <div class="tl-time">13:00</div>
+        <div class="tl-title">🍽 Almuerzo: Schønnemann</div>
+        <div class="tl-note">Hauser Pl. 16 · smørrebrød desde 1877 · RESERVAR 1 sem antes · restaurantschonnemann.dk</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">15:00</div>
+        <div class="tl-title">Christiansborg + Torre</div>
+        <div class="tl-note">Palacio del Parlamento · TORRE GRATIS con vistas 360°</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">17:30</div>
+        <div class="tl-title">Fika: Conditori La Glace</div>
+        <div class="tl-note">Skoubogade 3 · pastelería 1870 · wienerbrød auténtico</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">18:30</div>
+        <div class="tl-title">Showrooms 3daysofdesign</div>
+        <div class="tl-note">Hay · &Tradition · Gubi · Fritz Hansen · entrada libre</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">19:30</div>
+        <div class="tl-title">🍽 Cena en Vesterbro</div>
+        <div class="tl-note">Mother (pizza) o Pony (alta cocina informal)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DÍA 3 -->
+  <div id="day-3" class="day-content">
+    <div class="day-header">
+      <div class="day-date">Jueves 11 de junio</div>
+      <div class="day-title">Riviera danesa con coche</div>
+      <div class="day-sleep">🌙 Dormir en <span class="day-hotel-badge">Go Hotel City</span></div>
+    </div>
+    <div class="guide-alert">🚗 Recoger coche en CPH Car Rental Centre · Terminal Bus desde T3 · Europcar · Toyota Yaris Cross automático</div>
+    <div class="timeline">
+      <div class="timeline-item confirmed">
+        <div class="tl-time">9:00</div>
+        <div class="tl-title">🚗 Europcar CPH Car Rental Centre</div>
+        <div class="tl-note">✅ RESERVADO · Yaris Cross auto · 97,22€ · Llevar: carnet, DNI, tarjeta de crédito, voucher</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">10:00</div>
+        <div class="tl-title">Frederiksborg</div>
+        <div class="tl-note">45 min en coche · "Versalles danés" · ~90 DKK/persona</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-title">🍽 Almuerzo: Helsingør</div>
+        <div class="tl-note">Puerto · Madam Sprunck · Kronborg solo desde fuera</div>
+      </div>
+      <div class="timeline-item critical">
+        <div class="tl-time">15:30</div>
+        <div class="tl-title">Louisiana Museum</div>
+        <div class="tl-note">Arte moderno + jardín esculturas · ~145 DKK · JUEVES abre hasta 22h</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">20:00</div>
+        <div class="tl-title">🍽 Cena en Louisiana</div>
+        <div class="tl-note">Restaurante acristalado del museo con vistas al Øresund</div>
+      </div>
+      <div class="timeline-item confirmed">
+        <div class="tl-time">23:00</div>
+        <div class="tl-title">🚗 Devolver coche · CPH Car Rental Centre</div>
+        <div class="tl-note">Vuelta por E47 · ~45 min · metro M2 al hotel desde T3</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DÍA 4 -->
+  <div id="day-4" class="day-content">
+    <div class="day-header">
+      <div class="day-date">Viernes 12 de junio</div>
+      <div class="day-title">Christianshavn · Vuelo nocturno</div>
+      <div class="day-sleep">🌙 Dormir en <span class="day-hotel-badge">Good Morning Arlanda</span></div>
+    </div>
+    <div class="guide-tip">✅ Maletas en Go Hotel City (consigna gratis confirmada). Recogerlas antes de las 19:00.</div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tl-time">9:30</div>
+        <div class="tl-title">Mañana lenta · Vesterbro</div>
+        <div class="tl-note">Desayuno tranquilo · café y paseo sin prisa</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">11:30</div>
+        <div class="tl-title">Iglesia de San Salvador</div>
+        <div class="tl-note">Metro M1 a Christianshavn · escalera caracol exterior · 400 escalones · ~70 DKK · RESERVAR ONLINE (aforo limitado)</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-title">Christiania</div>
+        <div class="tl-note">Almuerzo dentro · NO fotos en Pusher Street</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">15:30</div>
+        <div class="tl-title">Green George</div>
+        <div class="tl-note">Escultura troll gigante de Thomas Dambo</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">16:30</div>
+        <div class="tl-title">CopenHill</div>
+        <div class="tl-note">Subida por la rampa de césped · Bus 2A · vistas 360° · gratis</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">18:00</div>
+        <div class="tl-title">La Banchina al ocaso</div>
+        <div class="tl-note">Vino natural junto al puerto · cierre nórdico</div>
+      </div>
+      <div class="timeline-item warning">
+        <div class="tl-time">19:00</div>
+        <div class="tl-title">Recoger maletas en Go Hotel City + cena rápida</div>
+        <div class="tl-note">Algo ligero · consigna abierta hasta el vuelo</div>
+      </div>
+      <div class="timeline-item warning">
+        <div class="tl-time">19:25</div>
+        <div class="tl-title">⚠️ Aeropuerto CPH T3</div>
+        <div class="tl-note">Metro M2 · 2h antes del vuelo · facturación</div>
+      </div>
+      <div class="timeline-item confirmed">
+        <div class="tl-time">21:25</div>
+        <div class="tl-title">✈ SK 1410 · CPH → ARN</div>
+        <div class="tl-note">Asientos 18E + 18F · Loc: XB6YN5 · llegada 22:35</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">23:00</div>
+        <div class="tl-title">🚌 Lanzadera gratis al hotel</div>
+        <div class="tl-note">Good Morning Arlanda · 10 min · check-in 23:30</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DÍA 5 -->
+  <div id="day-5" class="day-content">
+    <div class="day-header">
+      <div class="day-date">Sábado 13 de junio</div>
+      <div class="day-title">Transición · Gamla Stan · Söder</div>
+      <div class="day-sleep">🌙 Dormir en <span class="day-hotel-badge">voco Stockholm Kista</span></div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tl-time">8:00</div>
+        <div class="tl-title">Desayuno Good Morning Arlanda</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-title">🚌 Lanzadera al aeropuerto</div>
+        <div class="tl-note">Shuttle gratuito</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">9:15</div>
+        <div class="tl-title">Pendeltåg Arlanda → Helenelund</div>
+        <div class="tl-note">18 min · comprar billete con recargo aeropuerto (~24€ los 2) · en app SL o mostrador</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">10:00</div>
+        <div class="tl-title">Dejar maletas · voco Kista</div>
+        <div class="tl-note">8 min andando desde Helenelund · consigna gratuita</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">10:30</div>
+        <div class="tl-title">Comprar SL 72h en app + metro al centro</div>
+        <div class="tl-note">310 SEK/persona (~56€ los 2) · Metro azul T11 → T-Centralen · 22 min</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">11:00</div>
+        <div class="tl-title">Gamla Stan</div>
+        <div class="tl-note">Stortorget · Storkyrkan · Mårten Trotzigs Gränd</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">12:15</div>
+        <div class="tl-title">Cambio de guardia · Palacio Real</div>
+        <div class="tl-note">Sábados es el mejor día</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">12:30</div>
+        <div class="tl-title">Stadshuset</div>
+        <div class="tl-note">Hantverkargatan 1 · tour 45 min · Salón Dorado y Salón Azul (Premio Nobel) · comprar ticket en taquilla</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">14:30</div>
+        <div class="tl-title">🍽 Östermalms Saluhall</div>
+        <div class="tl-note">Mercado modernista · Toast Skagen en Lisa Elmqvist</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">16:30</div>
+        <div class="tl-title">Fika: Vete Katten</div>
+        <div class="tl-note">Kungsgatan 55 · café + kanelbulle · 45 min sin móvil</div>
+      </div>
+      <div class="timeline-item critical">
+        <div class="tl-time">19:30</div>
+        <div class="tl-title">🍽 Cena: Pelikan</div>
+        <div class="tl-note">Blekingegatan 40 · Söder · cervecería 1733 · köttbullar · RESERVAR 1 sem antes · pelikan.se</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">21:30</div>
+        <div class="tl-title">Skinnarviksberget</div>
+        <div class="tl-note">Roca con vistas al lago Mälaren · llevar manta y cervezas · luz hasta 22:30</div>
+      </div>
+      <div class="timeline-item confirmed">
+        <div class="tl-time">22:30</div>
+        <div class="tl-title">🏨 Check-in voco Kista</div>
+        <div class="tl-note">Metro T11 desde T-Centralen · 22 min · recepción 24h</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DÍA 6 -->
+  <div id="day-6" class="day-content">
+    <div class="day-header">
+      <div class="day-date">Domingo 14 de junio</div>
+      <div class="day-title">Djurgården · Subway Art Tour</div>
+      <div class="day-sleep">🌙 Dormir en <span class="day-hotel-badge">voco Stockholm Kista</span></div>
+    </div>
+    <div class="guide-alert">⚠️ Domingo noche: el metro NO funciona 24h. Último servicio ~01:00. No quedarse más tarde.</div>
+    <div class="timeline">
+      <div class="timeline-item warning">
+        <div class="tl-time">8:30</div>
+        <div class="tl-title">⚠️ Vasa Museum AL ABRIR</div>
+        <div class="tl-note">CRÍTICO: a las 11h hay colas brutales · tranvía 7 · Djurgårdsvägen 14</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">10:30</div>
+        <div class="tl-title">Museo de ABBA (solo si sois fans)</div>
+        <div class="tl-note">5 min andando del Vasa · 24€/persona · 1h-1h30</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-title">Skansen</div>
+        <div class="tl-note">Museo al aire libre · casas históricas + zoo nórdico · artesanos de época</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">14:00</div>
+        <div class="tl-title">🍽 Almuerzo: Rosendals Trädgård</div>
+        <div class="tl-note">15 min andando · jardín ecológico · mesas bajo manzanos · kanelbulle de leña</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">15:30</div>
+        <div class="tl-title">Vuelta hacia Plaza Sergel</div>
+        <div class="tl-note">Tranvía 7 al centro</div>
+      </div>
+      <div class="timeline-item confirmed">
+        <div class="tl-time">17:00</div>
+        <div class="tl-title">🎫 SUBWAY ART TOUR</div>
+        <div class="tl-note">Plaza Sergel · Ref: A38809069 · 2 personas · LLEGAR 15 MIN ANTES</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">~19:00</div>
+        <div class="tl-title">🍽 Cena cerca del centro</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">21:00</div>
+        <div class="tl-title">Atardecer Fotografiska</div>
+        <div class="tl-note">Restaurante azotea · vistas a Gamla Stan</div>
+      </div>
+      <div class="timeline-item warning">
+        <div class="tl-time">22:30</div>
+        <div class="tl-title">⚠️ Tantolunden</div>
+        <div class="tl-note">Parque junto al lago · luz violeta hasta 23:30 · SALIR ANTES 00:30</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DÍA 7 -->
+  <div id="day-7" class="day-content">
+    <div class="day-header">
+      <div class="day-date">Lunes 15 de junio</div>
+      <div class="day-title">Hornstull · Vuelta a casa</div>
+      <div class="day-sleep">✈ Vuelo de regreso a Barcelona</div>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tl-time">9:30</div>
+        <div class="tl-title">Hornstullsstrand</div>
+        <div class="tl-note">Metro a Hornstull · bares al agua y barrio</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">11:30</div>
+        <div class="tl-title">🍽 Almuerzo tranquilo en Söder</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">12:30</div>
+        <div class="tl-title">Recoger maletas · voco Kista</div>
+        <div class="tl-note">Metro al hotel y recoger</div>
+      </div>
+      <div class="timeline-item warning">
+        <div class="tl-time">13:45</div>
+        <div class="tl-title">⚠️ Arlanda Express</div>
+        <div class="tl-note">Desde Estación Central · 20 min al aeropuerto · ~60€ los 2 · comprar online antes</div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">14:05</div>
+        <div class="tl-title">Llegada ARN T5 · facturar</div>
+      </div>
+      <div class="timeline-item confirmed">
+        <div class="tl-time">16:20</div>
+        <div class="tl-title">✈ D8 4253 · ARN → BCN</div>
+        <div class="tl-note">Llegada Barcelona T2 19:45 · Loc: XRUYR6</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ PAGOS ═══════════════ -->
+<div id="section-pagos" class="section">
+  <div class="section-title">Pagos y dinero</div>
+  <div class="section-sub">Cómo pagar en Dinamarca y Suecia sin perder dinero</div>
+
+  <div class="guide-alert">🚫 NUNCA pagar en EUR cuando el datáfono lo pregunte. Siempre DKK en Dinamarca, SEK en Suecia.</div>
+
+  <div class="payment-card revolut">
+    <div class="payment-card-title">💚 Revolut — para TODO en DKK y SEK</div>
+    <div class="payment-card-subtitle">Tipo de cambio interbancario · sin comisión entre semana</div>
+    <div class="payment-rule"><span class="payment-icon">✅</span> Hoteles de Copenhague (Go Hotel City)</div>
+    <div class="payment-rule"><span class="payment-icon">✅</span> Hoteles de Estocolmo (Good Morning Arlanda, voco Kista)</div>
+    <div class="payment-rule"><span class="payment-icon">✅</span> Todas las comidas, transporte, entradas</div>
+    <div class="payment-rule"><span class="payment-icon">⚠️</span> Fin de semana (sáb/dom): +1% de margen. Convertir DKK/SEK el viernes antes.</div>
+    <div class="payment-rule"><span class="payment-icon">ℹ️</span> Límite Standard: 1.000€/mes sin comisión. Con 400€ DKK + 300€ SEK ya tienes suficiente.</div>
+  </div>
+
+  <div class="payment-card visa">
+    <div class="payment-card-title">💙 Visa Kutxabank Platinum — solo lo de EUR</div>
+    <div class="payment-card-subtitle">3% comisión en divisa extranjera · activa seguro de viaje</div>
+    <div class="payment-rule"><span class="payment-icon">✅</span> Vuelos (ya pagados en EUR)</div>
+    <div class="payment-rule"><span class="payment-icon">✅</span> Alquiler de coche (ya pagado en EUR)</div>
+    <div class="payment-rule"><span class="payment-icon">ℹ️</span> Al pagar con Platinum se activa el seguro de viaje incluido</div>
+    <div class="payment-rule"><span class="payment-icon">⚠️</span> NO usarla para compras en DKK o SEK: +3% sobre la conversión</div>
+  </div>
+
+  <div class="payment-card never">
+    <div class="payment-card-title">🚫 DCC (Dynamic Currency Conversion) — NUNCA</div>
+    <div class="payment-card-subtitle">Cuando el datáfono pregunta "pagar en EUR"</div>
+    <div class="payment-rule"><span class="payment-icon">❌</span> Sobre 100€ en compra → pierdes 5-10€ sin enterarte</div>
+    <div class="payment-rule"><span class="payment-icon">❌</span> Sobre 900€ hotel → pierdes 45-90€</div>
+    <div class="payment-rule"><span class="payment-icon">✅</span> Respuesta siempre: "DKK please" o "SEK please"</div>
+  </div>
+
+  <div class="card" style="margin-top:20px">
+    <div class="card-body">
+      <div class="small-label" style="margin-bottom:12px">Cuánto ahorras eligiendo bien</div>
+      <table class="mini-table">
+        <thead><tr><th>Pago</th><th>Revolut</th><th>Visa Platinum</th><th>DCC (EUR)</th></tr></thead>
+        <tbody>
+          <tr><td>Hotel CPH 911€</td><td style="color:var(--green);font-weight:600">911€</td><td>938€</td><td style="color:var(--coral)">956€</td></tr>
+          <tr><td>Hotel ARN 121€</td><td style="color:var(--green);font-weight:600">121€</td><td>125€</td><td style="color:var(--coral)">127€</td></tr>
+          <tr><td>Hotel STH 395€</td><td style="color:var(--green);font-weight:600">395€</td><td>407€</td><td style="color:var(--coral)">415€</td></tr>
+          <tr><td><strong>Ahorro total</strong></td><td style="color:var(--green);font-weight:700">0€</td><td>+39€</td><td style="color:var(--coral);font-weight:700">+87€ tirados</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ PENDIENTES ═══════════════ -->
+<div id="section-pendientes" class="section">
+  <div class="section-title">Lista de pendientes</div>
+  <div class="section-sub">Toca para marcar como hecho · se guarda automáticamente</div>
+
+  <div class="checklist-group">
+    <div class="checklist-group-title">🔴 Urgente — ya se puede reservar</div>
+
+    <div class="check-item" id="ci-gorilla" onclick="toggleCheck('gorilla')">
+      <div class="ci-box" id="box-gorilla"></div>
+      <div class="ci-content">
+        <div class="ci-title">Gorilla · cena día 1 (vie 9 jun 19:30)</div>
+        <div class="ci-sub">restaurantgorilla.dk → Booking → 9 jun, 19:30, 2 personas · ya abierto</div>
+      </div>
+      <div class="ci-cost">Gratis</div>
+    </div>
+  </div>
+
+  <div class="checklist-group">
+    <div class="checklist-group-title">🟠 1-2 semanas antes del viaje</div>
+
+    <div class="check-item" id="ci-schonnemann" onclick="toggleCheck('schonnemann')">
+      <div class="ci-box" id="box-schonnemann"></div>
+      <div class="ci-content">
+        <div class="ci-title">Schønnemann · almuerzo día 2 (mié 10 jun 13:00)</div>
+        <div class="ci-sub">restaurantschonnemann.dk → Book a table</div>
+      </div>
+      <div class="ci-cost">Gratis</div>
+    </div>
+
+    <div class="check-item" id="ci-pelikan" onclick="toggleCheck('pelikan')">
+      <div class="ci-box" id="box-pelikan"></div>
+      <div class="ci-content">
+        <div class="ci-title">Pelikan · cena día 5 (sáb 13 jun 19:30)</div>
+        <div class="ci-sub">pelikan.se → Boka bord · pedir sala grande con techos altos</div>
+      </div>
+      <div class="ci-cost">Gratis</div>
+    </div>
+
+    <div class="check-item" id="ci-rosenborg" onclick="toggleCheck('rosenborg')">
+      <div class="ci-box" id="box-rosenborg"></div>
+      <div class="ci-content">
+        <div class="ci-title">Entradas Rosenborg Castle ONLINE</div>
+        <div class="ci-sub">denkongeligesamling.dk · slots cada 10 min · aforo limitado</div>
+      </div>
+      <div class="ci-cost">~38€/2</div>
+    </div>
+
+    <div class="check-item" id="ci-louisiana" onclick="toggleCheck('louisiana')">
+      <div class="ci-box" id="box-louisiana"></div>
+      <div class="ci-content">
+        <div class="ci-title">Entradas Louisiana Museum ONLINE</div>
+        <div class="ci-sub">louisiana.dk · jueves hasta 22h</div>
+      </div>
+      <div class="ci-cost">~38€/2</div>
+    </div>
+
+    <div class="check-item" id="ci-salvador" onclick="toggleCheck('salvador')">
+      <div class="ci-box" id="box-salvador"></div>
+      <div class="ci-content">
+        <div class="ci-title">Entradas Iglesia San Salvador ONLINE</div>
+        <div class="ci-sub">vorfrelserskirke.dk · aforo limitado · reservar con antelación</div>
+      </div>
+      <div class="ci-cost">~22€/2</div>
+    </div>
+
+    <div class="check-item" id="ci-christiansborg" onclick="toggleCheck('christiansborg')">
+      <div class="ci-box" id="box-christiansborg"></div>
+      <div class="ci-content">
+        <div class="ci-title">Entradas Christiansborg salones reales</div>
+        <div class="ci-sub">kongeligeslotte.dk · torre GRATIS sin reserva</div>
+      </div>
+      <div class="ci-cost">~26€/2</div>
+    </div>
+
+    <div class="check-item" id="ci-voco-msg" onclick="toggleCheck('voco-msg')">
+      <div class="ci-box" id="box-voco-msg"></div>
+      <div class="ci-content">
+        <div class="ci-title">Escribir al voco Kista</div>
+        <div class="ci-sub">Check-in tardío ~22:30 sáb + dejar maletas mañana · ver plantilla en Guías</div>
+      </div>
+      <div class="ci-cost">Gratis</div>
+    </div>
+  </div>
+
+  <div class="checklist-group">
+    <div class="checklist-group-title">🟡 Antes de salir / al llegar</div>
+
+    <div class="check-item" id="ci-rejsebillet" onclick="toggleCheck('rejsebillet')">
+      <div class="ci-box" id="box-rejsebillet"></div>
+      <div class="ci-content">
+        <div class="ci-title">Descargar app Rejsebillet (transporte CPH)</div>
+        <div class="ci-sub">App Store / Google Play · "Rejsebillet" · sustituye a DOT</div>
+      </div>
+      <div class="ci-cost">Gratis</div>
+    </div>
+
+    <div class="check-item" id="ci-sl-app" onclick="toggleCheck('sl-app')">
+      <div class="ci-box" id="box-sl-app"></div>
+      <div class="ci-content">
+        <div class="ci-title">Descargar app SL (transporte Estocolmo)</div>
+        <div class="ci-sub">"SL — Journey planner and tickets" · logo azul cuadrado</div>
+      </div>
+      <div class="ci-cost">Gratis</div>
+    </div>
+
+    <div class="check-item" id="ci-city-pass" onclick="toggleCheck('city-pass')">
+      <div class="ci-box" id="box-city-pass"></div>
+      <div class="ci-content">
+        <div class="ci-title">City Pass Small 72h x2 · Copenhague</div>
+        <div class="ci-sub">Comprar en app Rejsebillet al llegar a CPH · activar al subir al 1er transporte</div>
+      </div>
+      <div class="ci-cost">~72€/2</div>
+    </div>
+
+    <div class="check-item" id="ci-sl-card" onclick="toggleCheck('sl-card')">
+      <div class="ci-box" id="box-sl-card"></div>
+      <div class="ci-content">
+        <div class="ci-title">SL 72h x2 + recargos Arlanda · Estocolmo</div>
+        <div class="ci-sub">Comprar en app SL sáb 13 mañana · 310 SEK/persona</div>
+      </div>
+      <div class="ci-cost">~80€/2</div>
+    </div>
+
+    <div class="check-item" id="ci-arlanda-express" onclick="toggleCheck('arlanda-express')">
+      <div class="ci-box" id="box-arlanda-express"></div>
+      <div class="ci-content">
+        <div class="ci-title">Arlanda Express · vuelta lunes</div>
+        <div class="ci-sub">arlandaexpress.com · comprar online · 13:45 desde T-Centralen</div>
+      </div>
+      <div class="ci-cost">~60€/2</div>
+    </div>
+
+    <div class="check-item" id="ci-revolut-dx" onclick="toggleCheck('revolut-dx')">
+      <div class="ci-box" id="box-revolut-dx"></div>
+      <div class="ci-content">
+        <div class="ci-title">Cargar Revolut · cambiar DKK y SEK</div>
+        <div class="ci-sub">Convertir 400€→DKK + 300€→SEK en día laborable antes del viaje</div>
+      </div>
+      <div class="ci-cost">—</div>
+    </div>
+
+    <div class="check-item" id="ci-seguro" onclick="toggleCheck('seguro')">
+      <div class="ci-box" id="box-seguro"></div>
+      <div class="ci-content">
+        <div class="ci-title">Verificar seguro de viaje · Visa Platinum</div>
+        <div class="ci-sub">App Kutxabank → Tarjetas → Tu Visa Platinum → Seguros incluidos</div>
+      </div>
+      <div class="ci-cost">—</div>
+    </div>
+  </div>
+
+  <div class="checklist-group">
+    <div class="checklist-group-title">✅ Ya confirmado y pagado</div>
+    <div class="check-item done">
+      <div class="ci-box" style="background:var(--green);border-color:var(--green);color:white">✓</div>
+      <div class="ci-content"><div class="ci-title">Vuelo Norwegian D8 3657 · BCN→CPH</div></div>
+      <div class="ci-cost">281€</div>
+    </div>
+    <div class="check-item done">
+      <div class="ci-box" style="background:var(--green);border-color:var(--green);color:white">✓</div>
+      <div class="ci-content"><div class="ci-title">Vuelo SAS SK 1410 · CPH→ARN</div></div>
+      <div class="ci-cost">237€</div>
+    </div>
+    <div class="check-item done">
+      <div class="ci-box" style="background:var(--green);border-color:var(--green);color:white">✓</div>
+      <div class="ci-content"><div class="ci-title">Vuelo Norwegian D8 4253 · ARN→BCN</div></div>
+      <div class="ci-cost">561€</div>
+    </div>
+    <div class="check-item done">
+      <div class="ci-box" style="background:var(--green);border-color:var(--green);color:white">✓</div>
+      <div class="ci-content"><div class="ci-title">Go Hotel City · Copenhague · 3 noches</div></div>
+      <div class="ci-cost">911€</div>
+    </div>
+    <div class="check-item done">
+      <div class="ci-box" style="background:var(--green);border-color:var(--green);color:white">✓</div>
+      <div class="ci-content"><div class="ci-title">Good Morning Arlanda · 1 noche</div></div>
+      <div class="ci-cost">121€</div>
+    </div>
+    <div class="check-item done">
+      <div class="ci-box" style="background:var(--green);border-color:var(--green);color:white">✓</div>
+      <div class="ci-content"><div class="ci-title">voco Stockholm Kista · 2 noches</div></div>
+      <div class="ci-cost">395€</div>
+    </div>
+    <div class="check-item done">
+      <div class="ci-box" style="background:var(--green);border-color:var(--green);color:white">✓</div>
+      <div class="ci-content"><div class="ci-title">Europcar · Toyota Yaris Cross · 11 jun</div></div>
+      <div class="ci-cost">97€</div>
+    </div>
+    <div class="check-item done">
+      <div class="ci-box" style="background:var(--green);border-color:var(--green);color:white">✓</div>
+      <div class="ci-content"><div class="ci-title">Subway Art Tour · dom 14 jun 17:00</div></div>
+      <div class="ci-cost">Krystel</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════ GUÍAS ═══════════════ -->
+<div id="section-guias" class="section">
+  <div class="section-title">Guías paso a paso</div>
+  <div class="section-sub">Cómo hacer cada cosa durante el viaje</div>
+
+  <!-- TRANSPORT CPH -->
+  <div class="guide-section">
+    <div class="guide-title">🚇 Transporte Copenhague</div>
+
+    <div class="guide-block">
+      <div class="guide-block-title">📱 App: Rejsebillet (nueva desde 2026)</div>
+      <div class="guide-alert">La antigua app DOT ha cerrado. La nueva oficial es REJSEBILLET.</div>
+      <div class="guide-step"><div class="guide-step-num">1</div><div>Descargar "Rejsebillet" en App Store / Google Play</div></div>
+      <div class="guide-step"><div class="guide-step-num">2</div><div>Crear cuenta con tu email</div></div>
+      <div class="guide-step"><div class="guide-step-num">3</div><div>Buscar "City Pass Small 72h" → zonas 1-4 → 1 unidad por persona</div></div>
+      <div class="guide-step"><div class="guide-step-num">4</div><div>⚠️ NO activar hasta subir al primer transporte en Copenhague</div></div>
+      <div class="guide-step"><div class="guide-step-num">5</div><div>Mostrar QR en los torniquetes o al conductor</div></div>
+    </div>
+
+    <div class="guide-block">
+      <div class="guide-block-title">🎫 City Pass Small 72h</div>
+      <div class="guide-step"><div class="guide-step-num">💰</div><div>~270 DKK/persona = ~36€ · Total los 2: ~72€</div></div>
+      <div class="guide-step"><div class="guide-step-num">✅</div><div>Cubre: Metro M1/M2/M3/M4, bus, tren regional, ferries del puerto (zonas 1-4)</div></div>
+      <div class="guide-step"><div class="guide-step-num">❌</div><div>No cubre: trenes a Helsingør/Louisiana (pero vais en coche ese día)</div></div>
+    </div>
+  </div>
+
+  <!-- TRANSPORT STH -->
+  <div class="guide-section">
+    <div class="guide-title">🚇 Transporte Estocolmo</div>
+
+    <div class="guide-block">
+      <div class="guide-block-title">📱 App: SL — Journey planner and tickets</div>
+      <div class="guide-step"><div class="guide-step-num">1</div><div>Descargar "SL" en App Store / Google Play (logo azul cuadrado · desarrollador Storstockholms Lokaltrafik)</div></div>
+      <div class="guide-step"><div class="guide-step-num">2</div><div>Crear cuenta con email</div></div>
+      <div class="guide-step"><div class="guide-step-num">3</div><div>Sáb 13 mañana: comprar 2 billetes 72h + 2 recargos Arlanda</div></div>
+      <div class="guide-step"><div class="guide-step-num">4</div><div>Si la app falla: Apple Pay tap-in directo en torniquetes del metro (43 SEK/viaje)</div></div>
+      <div class="guide-step"><div class="guide-step-num">5</div><div>Plan B total: Pressbyrån (kioskos del metro) venden tarjetas físicas SL</div></div>
+    </div>
+
+    <div class="guide-block">
+      <div class="guide-block-title">🎫 SL 72h + Pendeltåg Arlanda</div>
+      <div class="guide-step"><div class="guide-step-num">💰</div><div>SL 72h: 310 SEK/persona = ~28€ · Total: ~56€</div></div>
+      <div class="guide-step"><div class="guide-step-num">💰</div><div>Recargo Pendeltåg Arlanda: ~125 SEK/persona = ~12€ · Total: ~24€</div></div>
+      <div class="guide-step"><div class="guide-step-num">✅</div><div>Cubre: Metro (todas las líneas), bus, tranvía, Pendeltåg, ferries zona AB</div></div>
+      <div class="guide-step"><div class="guide-step-num">❌</div><div>NO cubre: Arlanda Express (operador distinto, ~30€/persona)</div></div>
+    </div>
+
+    <div class="guide-block">
+      <div class="guide-block-title">🚂 Pendeltåg Arlanda → Helenelund (sáb 13 mañana)</div>
+      <div class="guide-step"><div class="guide-step-num">1</div><div>Desde ARN T5: buscar "Pendeltåg" (línea 41 o 43)</div></div>
+      <div class="guide-step"><div class="guide-step-num">2</div><div>Comprar billete con "recargo aeropuerto" en app SL o máquina verde SJ</div></div>
+      <div class="guide-step"><div class="guide-step-num">3</div><div>Bajar en Helenelund · 18 min</div></div>
+      <div class="guide-step"><div class="guide-step-num">4</div><div>Andar 8 min hasta voco Kista</div></div>
+    </div>
+
+    <div class="guide-block">
+      <div class="guide-block-title">🚂 Arlanda Express vuelta (lun 15)</div>
+      <div class="guide-step"><div class="guide-step-num">💰</div><div>Online: ~30€/persona (60€ los 2) · arlandaexpress.com</div></div>
+      <div class="guide-step"><div class="guide-step-num">⏱</div><div>20 min T-Centralen → ARN T5</div></div>
+      <div class="guide-step"><div class="guide-step-num">🕑</div><div>Salir a las 13:45 · llegar ARN 14:05 (2h antes del vuelo 16:20)</div></div>
+    </div>
+  </div>
+
+  <!-- RESTAURANTES -->
+  <div class="guide-section">
+    <div class="guide-title">🍽 Reservas de restaurantes</div>
+
+    <div class="guide-block">
+      <div class="guide-block-title">🐟 Gorilla · Copenhague · Día 1 · 19:30</div>
+      <div class="guide-step"><div class="guide-step-num">🌐</div><div>restaurantgorilla.dk → "Booking"</div></div>
+      <div class="guide-step"><div class="guide-step-num">📅</div><div>Seleccionar: 9 jun, 19:30, 2 personas, "main dining room"</div></div>
+      <div class="guide-step"><div class="guide-step-num">ℹ️</div><div>Sistema abre 90 días antes · Ya disponible · Cancelación gratuita 24h</div></div>
+      <div class="guide-step"><div class="guide-step-num">⚠️</div><div>Cocina cierra a las 21h · reservar 19:30 como máximo</div></div>
+    </div>
+
+    <div class="guide-block">
+      <div class="guide-block-title">🥪 Schønnemann · Copenhague · Día 2 · 13:00</div>
+      <div class="guide-step"><div class="guide-step-num">🌐</div><div>restaurantschonnemann.dk → "Book a table"</div></div>
+      <div class="guide-step"><div class="guide-step-num">📅</div><div>Mínimo 1 semana antes · 12:30 o 13:00</div></div>
+      <div class="guide-step"><div class="guide-step-num">ℹ️</div><div>Smørrebrød tradicional desde 1877 · cancelación hasta el día antes</div></div>
+    </div>
+
+    <div class="guide-block">
+      <div class="guide-block-title">🍺 Pelikan · Estocolmo · Día 5 · 19:30</div>
+      <div class="guide-step"><div class="guide-step-num">🌐</div><div>pelikan.se → "Boka bord"</div></div>
+      <div class="guide-step"><div class="guide-step-num">📅</div><div>1 semana antes</div></div>
+      <div class="guide-step"><div class="guide-step-num">ℹ️</div><div>Pedir mesa en la SALA GRANDE con techos altos · no la pequeña</div></div>
+      <div class="guide-step"><div class="guide-step-num">🍽</div><div>Especialidad: Köttbullar + cerveza local sueca</div></div>
+    </div>
+  </div>
+
+  <!-- EUROPCAR -->
+  <div class="guide-section">
+    <div class="guide-title">🚗 Europcar · Día 3 · 11 jun</div>
+
+    <div class="guide-tip">✅ Reserva ya confirmada · no necesitas hacer nada · solo presentarte a las 9:00</div>
+
+    <div class="guide-block">
+      <div class="guide-block-title">📋 Qué llevar al mostrador</div>
+      <div class="guide-step"><div class="guide-step-num">1</div><div>Carnet de conducir español (físico, no foto)</div></div>
+      <div class="guide-step"><div class="guide-step-num">2</div><div>DNI o pasaporte</div></div>
+      <div class="guide-step"><div class="guide-step-num">3</div><div>Tarjeta de crédito a nombre de Ignacio (para depósito — solo bloqueo, no cobro)</div></div>
+      <div class="guide-step"><div class="guide-step-num">4</div><div>Voucher de confirmación (vale en el móvil · ref insago@gmail.com)</div></div>
+    </div>
+
+    <div class="guide-block">
+      <div class="guide-block-title">⚠️ En el mostrador te intentarán vender más</div>
+      <div class="guide-alert">Di siempre: "I already have full insurance through Rentalcars/Zurich, I don't need additional coverage"</div>
+      <div class="guide-step"><div class="guide-step-num">✅</div><div>Zurich Full Insurance EEA ya incluida · franquicia cero · sin extras necesarios</div></div>
+    </div>
+
+    <div class="guide-block">
+      <div class="guide-block-title">🚌 Cómo llegar al Car Rental Centre</div>
+      <div class="guide-step"><div class="guide-step-num">1</div><div>Metro M2 del hotel (Lergravsparken) → CPH Lufthavnen · 15 min</div></div>
+      <div class="guide-step"><div class="guide-step-num">2</div><div>En T3: buscar "Terminal Bus" (gratuito) · destino "Car Rental Centre"</div></div>
+      <div class="guide-step"><div class="guide-step-num">3</div><div>El bus sale cada pocos minutos · 5-10 min de trayecto</div></div>
+      <div class="guide-step"><div class="guide-step-num">4</div><div>Todos los mostradores están en el mismo edificio</div></div>
+    </div>
+  </div>
+
+  <!-- MENSAJES HOTELES -->
+  <div class="guide-section">
+    <div class="guide-title">📧 Mensajes a los hoteles</div>
+
+    <div class="guide-block">
+      <div class="guide-block-title">🏨 voco Stockholm Kista — check-in tardío + maletas</div>
+      <div class="guide-tip">Enviar desde Booking.com → "Solicitar info al alojamiento"</div>
+      <div class="msg-template">Subject: Late check-in and morning luggage drop on June 13
+
+Hello,
+
+We have a confirmed reservation arriving on Saturday June 13. We will arrive at the hotel from Arlanda Airport in the morning around 10:00 to drop our luggage before exploring the city, and we'll return for the actual check-in around 22:30 in the evening.
+
+Could you please:
+1. Confirm we can leave luggage in storage from 10:00 (free service?)
+2. Confirm late check-in around 22:30 is fine
+
+Thanks in advance,
+Iñaki Sánchez González</div>
+    </div>
+
+    <div class="guide-block">
+      <div class="guide-block-title">🏨 Good Morning Arlanda — aviso llegada tardía</div>
+      <div class="guide-tip">Opcional pero recomendable · enviar desde Booking.com</div>
+      <div class="msg-template">Subject: Late arrival around 23:30 on June 12
+
+Hi, we'll arrive at the hotel via your free shuttle around 23:00-23:30 on Friday June 12 from a late evening flight from Copenhagen. Just a heads-up. Reservation confirmed under Sánchez González.
+
+Thank you!</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ——— NAVEGACIÓN ———
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('section-' + id).classList.add('active');
+  event.target.classList.add('active');
+}
+
+// ——— DÍAS ———
+function showDay(n) {
+  document.querySelectorAll('.day-content').forEach(d => d.classList.remove('active'));
+  document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('day-' + n).classList.add('active');
+  document.querySelectorAll('.day-btn')[n-1].classList.add('active');
+}
+
+// ——— CHECKLIST CON LOCALSTORAGE ———
+const CHECKS = ['gorilla','schonnemann','pelikan','rosenborg','louisiana','salvador','christiansborg','voco-msg','rejsebillet','sl-app','city-pass','sl-card','arlanda-express','revolut-dx','seguro'];
+
+function toggleCheck(id) {
+  const item = document.getElementById('ci-' + id);
+  const box = document.getElementById('box-' + id);
+  const isDone = item.classList.toggle('done');
+  box.innerHTML = isDone ? '✓' : '';
+  box.style.background = isDone ? 'var(--green)' : '';
+  box.style.borderColor = isDone ? 'var(--green)' : '';
+  box.style.color = isDone ? 'white' : '';
+  localStorage.setItem('check_' + id, isDone ? '1' : '0');
+}
+
+function loadChecks() {
+  CHECKS.forEach(id => {
+    if (localStorage.getItem('check_' + id) === '1') {
+      const item = document.getElementById('ci-' + id);
+      const box = document.getElementById('box-' + id);
+      if (item && box) {
+        item.classList.add('done');
+        box.innerHTML = '✓';
+        box.style.background = 'var(--green)';
+        box.style.borderColor = 'var(--green)';
+        box.style.color = 'white';
+      }
+    }
+  });
+}
+
+loadChecks();
+</script>
+</body>
+</html>
