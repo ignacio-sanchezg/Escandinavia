@@ -891,6 +891,28 @@ nav::-webkit-scrollbar { display: none; }
   margin-left: 2px;
 }
 
+
+.tl-tip {margin-top:7px;}
+.tl-tip summary {
+  cursor:pointer; user-select:none; list-style:none;
+  font-size:12px; font-weight:600; color:var(--gold);
+  display:flex; align-items:center; gap:5px;
+  padding:4px 0;
+}
+.tl-tip summary::-webkit-details-marker {display:none}
+.tl-tip summary::before {content:'▶'; font-size:8px; color:var(--gold); transition:transform .2s}
+.tl-tip[open] summary::before {transform:rotate(90deg)}
+.tl-tip-body {
+  background:var(--gold-light);
+  border-left:3px solid var(--gold);
+  border-radius:0 7px 7px 0;
+  padding:9px 12px;
+  font-size:12px;
+  color:var(--gray-700);
+  line-height:1.5;
+  margin-top:5px;
+}
+
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
@@ -1248,6 +1270,7 @@ nav::-webkit-scrollbar { display: none; }
         <div class="tl-time">17:00</div>
         <div class="tl-title">Nyhavn <a href="https://www.google.com/maps/search/?api=1&query=Nyhavn+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Casitas de colores y barcos · la postal de Copenhague</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">El lado con restaurantes es turístico y caro. Los daneses compran una cerveza en el súper y se sientan en el muelle del <em>lado de los barcos</em> con las piernas colgando — gratis y mucho más local. La foto icónica: desde el puente Nyhavnsbroen.</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">17:30</div>
@@ -1273,6 +1296,7 @@ nav::-webkit-scrollbar { display: none; }
         <div class="tl-time">20:30</div>
         <div class="tl-title">🍽 Cena: Gorilla <a href="https://www.google.com/maps/search/?api=1&query=Restaurant+Gorilla+Fl%C3%A6sketorvet+63+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Flæsketorvet 100 · Vesterbro · RESERVAR 3-4 sem antes · restaurantgorilla.dk · à la carte · pedir terraza · cocina hasta las 00h</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">Pide <strong>à la carte</strong>, no el menú degustación. Solicita terraza al reservar. Cocina de mercado — los platos cambian según temporada, pregunta qué recomienda el camarero ese día.</div></details>
       </div>
     </div>
   
@@ -1312,6 +1336,7 @@ nav::-webkit-scrollbar { display: none; }
         <div class="tl-time">9:30</div>
         <div class="tl-title">Castillo de Rosenborg <a href="https://www.google.com/maps/search/?api=1&query=Rosenborg+Castle+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Metro a Nørreport · joyas de la Corona · ~140 DKK · COMPRAR ONLINE antes</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">No te pierdas el <strong>Tesoro (Skatkammeret) en el sótano</strong> — las joyas de la Corona son el highlight real. La Sala de los Caballeros arriba tiene tres leones de plata. El museo es pequeño con aforo: si se agotan los slots del día, te quedas fuera.</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">11:30</div>
@@ -1322,26 +1347,31 @@ nav::-webkit-scrollbar { display: none; }
         <div class="tl-time">13:00</div>
         <div class="tl-title">🍽 Almuerzo: Schønnemann <a href="https://www.google.com/maps/search/?api=1&query=Restaurant+Schonnemann+Hauser+Plads+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Hauser Pl. 16 · smørrebrød desde 1877 · RESERVAR 1 sem antes · restaurantschonnemann.dk</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">Pide el <em>'dagens smørrebrød'</em> — lo que eligen los locales. El smørrebrød se come con <strong>cuchillo y tenedor, nunca con las manos</strong>. El rugbrød (pan de centeno) es muy denso — no te llenes solo con pan.</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">15:00</div>
         <div class="tl-title">Christiansborg + Torre <a href="https://www.google.com/maps/search/?api=1&query=Christiansborg+Palace+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Palacio del Parlamento · TORRE GRATIS con vistas 360°</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">La torre sube en <strong>ascensor</strong> — no escaleras. Cola de 30-60 min al mediodía: llega a las 10:30 para ser de los primeros, o <strong>ve después de las 18h</strong> (mucho menos gente). Abre hasta las 21h. Hay control de seguridad tipo aeropuerto — sin bolsas grandes, hay taquillas gratis abajo.</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">17:30</div>
         <div class="tl-title">Fika: Conditori La Glace <a href="https://www.google.com/maps/search/?api=1&query=Conditori+La+Glace+Skoubogade+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Skoubogade 3 · pastelería 1870 · wienerbrød auténtico</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">La <strong>tarta princesa (Prinsesstårta)</strong> es la especialidad — pídela. Se agota por la tarde: asegúrate llegando temprano. También prueba el <em>dammsugare</em> (cilindro verde de mazapán, extremos de chocolate).</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">18:30</div>
         <div class="tl-title">Showrooms 3daysofdesign <a href="https://www.google.com/maps/search/?api=1&query=3daysofdesign+Vesterbro+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Hay · &Tradition · Gubi · Fritz Hansen · entrada libre</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">La torre sube en <strong>ascensor</strong> — no escaleras. Cola de 30-60 min al mediodía: llega a las 10:30 para ser primero, o <strong>ve después de las 18h</strong> (mucho menos gente, abre hasta 21h). Control de seguridad tipo aeropuerto — sin bolsas grandes, hay taquillas gratis abajo.</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">19:30</div>
         <div class="tl-title">🍽 Cena en Vesterbro <a href="https://www.google.com/maps/search/?api=1&query=Vesterbro+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Mother (pizza) o Pony (alta cocina informal)</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">La <strong>tarta princesa (Prinsesstårta)</strong> es la especialidad — pídela. Se agota por la tarde: ve temprano. También prueba el <em>dammsugare</em> (cilindro verde de mazapán, extremos de chocolate).</div></details>
       </div>
     </div>
   
@@ -1391,21 +1421,25 @@ nav::-webkit-scrollbar { display: none; }
         <div class="tl-time">10:00</div>
         <div class="tl-title">Frederiksborg <a href="https://www.google.com/maps/search/?api=1&query=Frederiksborg+Castle+Hillerod+Denmark" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">45 min en coche · "Versalles danés" · ~90 DKK/persona</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">No te pierdas la <strong>Capilla del Castillo</strong> (oro de suelo a techo, órgano de 1610) y la Sala de los Caballeros. El <strong>jardín barroco es gratis</strong> con las mejores vistas al castillo reflejado en el lago. Aparcamiento gratuito en Rendelæggerbakken (10-15 min andando).</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">13:00</div>
         <div class="tl-title">🍽 Almuerzo: Helsingør <a href="https://www.google.com/maps/search/?api=1&query=Helsingor+harbour+Denmark" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Puerto · Madam Sprunck · Kronborg solo desde fuera</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">Kronborg (el castillo Hamlet) es el <strong>más prescindible del día</strong> — el interior está bastante vacío. Si entras, ve solo a las <strong>casamatas</strong>: túneles subterráneos con la estatua de Holger Danske (lleva la linterna del móvil). El <strong>ferry a Helsingborg (Suecia)</strong> sale cada 20 min, cruce de 20 min — mini-crucero barato con cubierta y cafetería. Lleva DNI.</div></details>
       </div>
       <div class="timeline-item critical">
         <div class="tl-time">15:30</div>
         <div class="tl-title">Louisiana Museum <a href="https://www.google.com/maps/search/?api=1&query=Louisiana+Museum+Humlebaek+Denmark" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Arte moderno + jardín esculturas · ~145 DKK · JUEVES abre hasta 22h</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">Kronborg (el castillo Hamlet) es el <strong>más prescindible del día</strong>. Si entras, ve solo a las <strong>casamatas</strong>: túneles con la estatua de Holger Danske (lleva la linterna del móvil). El <strong>ferry a Helsingborg (Suecia)</strong> sale cada 20 min, cruce de 20 min — mini-crucero barato con cubierta y cafetería. Lleva DNI.</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">20:00</div>
         <div class="tl-title">🍽 Cena en Louisiana <a href="https://www.google.com/maps/search/?api=1&query=Louisiana+Museum+restaurant+Humlebaek" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Restaurante acristalado del museo con vistas al Øresund</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">Audioguía web <strong>gratis</strong> — escanea los QR del museo (wifi password: <em>louisiana</em>). No te pierdas el jardín de esculturas con vistas al Øresund (Calder, Moore) y la instalación de Yayoi Kusama. El café/restaurante es caro — el jardín es perfecto para picnic. Compra billete combinado tren+entrada (más barato).</div></details>
       </div>
       <div class="timeline-item confirmed">
         <div class="tl-time">23:00</div>
@@ -1448,11 +1482,13 @@ nav::-webkit-scrollbar { display: none; }
         <div class="tl-time">11:30</div>
         <div class="tl-title">Iglesia de San Salvador <a href="https://www.google.com/maps/search/?api=1&query=Church+of+Our+Saviour+Copenhagen+Vor+Frelsers+Kirke" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Metro M1 a Christianshavn · escalera caracol exterior · 400 escalones · ~70 DKK · RESERVAR ONLINE (aforo limitado)</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">Los escalones exteriores son de <strong>rejilla metálica y se mojan</strong> — mejor con bota de suela de goma que con zapatilla plana. Los últimos metros son al aire libre sin barandilla: si tenéis vértigo, hasta 2/3 de la subida ya hay buenas vistas.</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">13:00</div>
         <div class="tl-title">Christiania <a href="https://www.google.com/maps/search/?api=1&query=Freetown+Christiania+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Almuerzo dentro · NO fotos en Pusher Street</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body"><strong>Actualización 2024:</strong> Pusher Street fue desmantelada en abril 2024 — ya no es el mercado de cannabis de las guías. Reglas no escritas: <strong>NO correr</strong> (indica peligro), NO fotos donde hay carteles prohibiéndolas. Lo mejor: casas autoconstruidas junto al lago y el restaurante orgánico Morgenstedet.</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">15:30</div>
@@ -1463,16 +1499,19 @@ nav::-webkit-scrollbar { display: none; }
         <div class="tl-time">16:30</div>
         <div class="tl-title">CopenHill <a href="https://www.google.com/maps/search/?api=1&query=CopenHill+Amager+Bakke+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Subida por la rampa de césped · Bus 2A · vistas 360° · gratis</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">El transporte público es irregular — confirma el bus 2A en la app Rejsebillet antes de salir. Considera ir en <strong>Donkey Republic</strong> (bici sin anclaje, app) desde Christianshavn. Arriba hay bar con vistas a los molinos del Øresund.</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">18:00</div>
         <div class="tl-title">La Banchina al ocaso <a href="https://www.google.com/maps/search/?api=1&query=La+Banchina+Copenhagen" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Vino natural junto al puerto · cierre nórdico</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">En verano <strong>no hace falta reservar</strong> mesa — te presentas y buscas sitio. Lleva bañador y toalla: hay zona de baño oficial. La sauna (privada, ~1h45) SÍ requiere reserva online con antelación. Solo 16 plazas — llega pronto en días de sol.</div></details>
       </div>
       <div class="timeline-item warning">
         <div class="tl-time">19:00</div>
         <div class="tl-title">Recoger maletas en Go Hotel City + cena rápida <a href="https://www.google.com/maps/search/?api=1&query=Go+Hotel+City+Copenhagen+Amager" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Algo ligero · consigna abierta hasta el vuelo</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">En verano <strong>no hace falta reservar</strong> mesa — te presentas y buscas sitio. Lleva bañador y toalla: hay zona de baño oficial. La sauna (privada) SÍ requiere <strong>reserva online</strong> con antelación. Solo 16 plazas — llega pronto en días de sol.</div></details>
       </div>
       <div class="timeline-item warning">
         <div class="tl-time">19:25</div>
@@ -1547,41 +1586,49 @@ nav::-webkit-scrollbar { display: none; }
         <div class="tl-time">11:00</div>
         <div class="tl-title">Gamla Stan <a href="https://www.google.com/maps/search/?api=1&query=Gamla+Stan+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Stortorget · Storkyrkan · Mårten Trotzigs Gränd</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">Evita Västerlånggatan (la calle principal) si hay multitudes. Métete por <strong>Mårten Trotzigs Gränd</strong> (el callejón más estrecho de Estocolmo, solo 90 cm) y <strong>Prästgatan</strong> (paralela y mucho más tranquila). Comer en Gamla Stan es notablemente más caro que en el resto de Estocolmo.</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">12:15</div>
         <div class="tl-title">Cambio de guardia · Palacio Real <a href="https://www.google.com/maps/search/?api=1&query=Stockholm+Royal+Palace" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Sábados es el mejor día</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">Evita Västerlånggatan (la calle principal) si hay multitudes. Métete por <strong>Mårten Trotzigs Gränd</strong> (el callejón más estrecho de Estocolmo, 90 cm) y <strong>Prästgatan</strong> (paralela y tranquila). Comer en Gamla Stan es notablemente más caro que en el resto de la ciudad.</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">12:30</div>
         <div class="tl-title">Stadshuset <a href="https://www.google.com/maps/search/?api=1&query=Stockholm+City+Hall+Stadshuset" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Hantverkargatan 1 · tour 45 min · Salón Dorado y Salón Azul (Premio Nobel) · comprar ticket en taquilla</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">El interior <strong>solo se visita con tour guiado</strong> (~150 SEK) — no se puede entrar libre. La Sala Dorada (Gyllene Salen) tiene 19 millones de teselas de pan de oro. La <strong>torre</strong> (aparte, ~90-100 SEK) tiene 365 escalones con ascensor hasta la mitad — 27 personas/franja, compra online para asegurar plaza.</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">14:30</div>
         <div class="tl-title">🍽 Östermalms Saluhall <a href="https://www.google.com/maps/search/?api=1&query=Ostermalms+Saluhall+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Mercado modernista · Toast Skagen en Lisa Elmqvist</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">Lisa Elmqvist tiene barra donde podéis sentaros <strong>sin reservar</strong>. El mercado cierra pronto (sáb 17h). Todo es caro — es un capricho, no para comer barato. Truco: hay un <strong>Lidl justo enfrente</strong>. No hay zona de mesas comunes entre puestos.</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">16:30</div>
         <div class="tl-title">Fika: Vete Katten <a href="https://www.google.com/maps/search/?api=1&query=Vete+Katten+Kungsgatan+55+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Kungsgatan 55 · café + kanelbulle · 45 min sin móvil</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">La tarta princesa (Prinsesstårta) <strong>se agota por la tarde</strong> — si la quieres, ve temprano. Hay salas al fondo más tranquilas si la primera está llena. En muchos cafés suecos el refill de café (<em>påtår</em>) es <strong>gratis</strong> — pregunta.</div></details>
       </div>
       <div class="timeline-item critical">
         <div class="tl-time">19:30</div>
         <div class="tl-title">🍽 Cena: Pelikan <a href="https://www.google.com/maps/search/?api=1&query=Pelikan+restaurant+Blekingegatan+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Blekingegatan 40 · Söder · cervecería 1733 · köttbullar · RESERVAR 1 sem antes · pelikan.se</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">La tarta princesa (Prinsesstårta) <strong>se agota por la tarde</strong> — ve temprano si la quieres. Hay salas al fondo más tranquilas. En muchos cafés suecos el refill de café (<em>påtår</em>) es <strong>gratis</strong> — pregunta.</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">21:30</div>
         <div class="tl-title">Skinnarviksberget</div>
         <div class="tl-note">Roca con vistas al lago Mälaren · llevar manta y cervezas · luz hasta 22:30</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">Pide mesa en la <strong>sala grande (Stora Ölhallen)</strong> con techos altos y murales — no en la sala pequeña. Pide: <strong>köttbullar</strong> (albóndigas clásicas), råbiff (steak tartar) o filete de reno. Puede ser muy ruidoso. Pide aquavit con la comida — es la tradición sueca.</div></details>
       </div>
       <div class="timeline-item confirmed">
         <div class="tl-time">22:30</div>
         <div class="tl-title">🏨 Check-in voco Kista <a href="https://www.google.com/maps/search/?api=1&query=voco+Stockholm+Kista+IHG" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Metro T11 desde T-Centralen · 22 min · recepción 24h</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">Metro línea roja a <strong>Zinkensdamm</strong> + 5 min andando. Lleva manta (las rocas son duras), picnic y capa (hace viento arriba). Llega 1h antes del atardecer para coger buen sitio — se llena. No hay papeleras, lleva bolsa para tu basura.</div></details>
       </div>
     </div>
   
@@ -1618,6 +1665,7 @@ nav::-webkit-scrollbar { display: none; }
         <div class="tl-time">8:30</div>
         <div class="tl-title">⚠️ Vasa Museum AL ABRIR <a href="https://www.google.com/maps/search/?api=1&query=Vasa+Museum+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">CRÍTICO: a las 11h hay colas brutales · tranvía 7 · Djurgårdsvägen 14</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">Llegar al abrir (8:30) te da 30-60 min con el barco casi para ti solo. Usa la <strong>audioguía gratis</strong> en el móvil (lleva auriculares). La <strong>película de 15-20 min</strong> en la entrada da contexto esencial — véela antes de entrar al barco.</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">10:30</div>
@@ -1628,11 +1676,13 @@ nav::-webkit-scrollbar { display: none; }
         <div class="tl-time">12:00</div>
         <div class="tl-title">Skansen <a href="https://www.google.com/maps/search/?api=1&query=Skansen+open+air+museum+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Museo al aire libre · casas históricas + zoo nórdico · artesanos de época</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">Prioriza el <strong>zoo nórdico</strong> (osos, lobos, linces, alces) y los sopladores de vidrio. El recinto es enorme — calcula 18.000 pasos. El <strong>ferry 82 desde Slussen</strong> está incluido en el billete SL — mini-crucero gratis hasta Djurgården. El 19 jun (Midsommarafton) hay gran celebración aquí: se masifica, reserva.</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">14:00</div>
         <div class="tl-title">🍽 Almuerzo: Rosendals Trädgård <a href="https://www.google.com/maps/search/?api=1&query=Rosendals+Tradgard+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">15 min andando · jardín ecológico · mesas bajo manzanos · kanelbulle de leña</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">El kanelbulle horneado en horno de leña aquí es uno de los mejores de Estocolmo. El jardín es <strong>ecológico y autosuficiente</strong> — pregunta por los tomates y hierbas. Muy tranquilo, lejos del turismo masivo de Djurgården.</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">15:30</div>
@@ -1643,6 +1693,7 @@ nav::-webkit-scrollbar { display: none; }
         <div class="tl-time">17:00</div>
         <div class="tl-title">🎫 SUBWAY ART TOUR <a href="https://www.google.com/maps/search/?api=1&query=Sergels+Torg+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Plaza Sergel · Ref: A38809069 · 2 personas · LLEGAR 15 MIN ANTES</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">Estaciones imprescindibles: <strong>T-Centralen</strong> línea azul (hojas azules/blancas — baja por las escaleras mecánicas), <strong>Kungsträdgården</strong> (excavación arqueológica), <strong>Rådhuset</strong> (rojo sangre) y <strong>Solna Centrum</strong> (para muchos la más espectacular — techo rojo con bosque verde). Para fotos: espera entre trenes cuando el andén está vacío.</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">~19:00</div>
@@ -1652,11 +1703,13 @@ nav::-webkit-scrollbar { display: none; }
         <div class="tl-time">21:00</div>
         <div class="tl-title">Atardecer Fotografiska <a href="https://www.google.com/maps/search/?api=1&query=Fotografiska+Museum+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Restaurante azotea · vistas a Gamla Stan</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">⚠️ <strong>El restaurante de la azotea CIERRA del 14 junio al 20 agosto</strong> (summer break oficial). Solo podréis acceder al café interior. Las exposiciones de fotografía siguen normales.</div></details>
       </div>
       <div class="timeline-item warning">
         <div class="tl-time">22:30</div>
         <div class="tl-title">⚠️ Tantolunden <a href="https://www.google.com/maps/search/?api=1&query=Tantolunden+park+Stockholm" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Parque junto al lago · luz violeta hasta 23:30 · SALIR ANTES 00:30</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">Llevar manta, picnic y <strong>bañador</strong> (zona de baño con pontones y trampolín). Beber con discreción — multa ~500 SEK con alcohol abierto en zona pública. Barbacoa <strong>solo en parrillas fijas designadas</strong>. Compra en supermercado antes: mucho más barato que en bares de Hornstull.</div></details>
       </div>
     </div>
   
@@ -1702,6 +1755,7 @@ nav::-webkit-scrollbar { display: none; }
         <div class="tl-time">13:45</div>
         <div class="tl-title">⚠️ Arlanda Express <a href="https://www.google.com/maps/search/?api=1&query=Stockholm+Central+Station+Arlanda+Express" target="_blank" class="map-link" title="Ver en Google Maps">📍</a></div>
         <div class="tl-note">Desde Estación Central · 20 min al aeropuerto · ~60€ los 2 · comprar online antes</div>
+        <details class="tl-tip"><summary>💡 Consejo insider</summary><div class="tl-tip-body">Alternativa más barata: <strong>pendeltåg hasta 'Arlanda Central'</strong> + suplemento de estación (~130 SEK los dos, vs ~690 SEK del Express). Más lento (+15 min). El Express va cada 15 min y hace 20 min exactos — <strong>recomendado con maletas</strong> en el día de vuelta.</div></details>
       </div>
       <div class="timeline-item">
         <div class="tl-time">14:05</div>
