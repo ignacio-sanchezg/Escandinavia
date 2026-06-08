@@ -913,6 +913,185 @@ nav::-webkit-scrollbar { display: none; }
   margin-top:5px;
 }
 
+
+/* ═══ ANIMACIONES ══════════════════════════════════════════════ */
+
+/* Keyframes base */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-14px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes checkBounce {
+  0%   { transform: scale(0.3); }
+  55%  { transform: scale(1.25); }
+  75%  { transform: scale(0.9); }
+  100% { transform: scale(1); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-5px); }
+}
+@keyframes goldPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232,160,32,.35); }
+  50%       { box-shadow: 0 0 0 8px rgba(232,160,32,0); }
+}
+@keyframes navSlide {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* HERO — entrada escalonada */
+.hero-eyebrow { animation: fadeInUp .5s ease both; }
+.hero h1      { animation: fadeInUp .6s .1s ease both; }
+.hero-dates   { animation: fadeInUp .5s .2s ease both; }
+.hero-pills   { animation: fadeInUp .5s .3s ease both; }
+
+/* SECCIONES — fade al cambiar pestaña */
+.section { transition: opacity .25s ease; }
+.section.active { animation: fadeIn .3s ease both; }
+
+/* CARDS — entrada al cargar + hover lift */
+.card {
+  animation: fadeInUp .45s ease both;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.12); }
+.card:nth-child(2) { animation-delay: .07s; }
+.card:nth-child(3) { animation-delay: .14s; }
+.card:nth-child(4) { animation-delay: .21s; }
+.card:nth-child(5) { animation-delay: .28s; }
+.card:nth-child(6) { animation-delay: .35s; }
+.card:nth-child(7) { animation-delay: .42s; }
+
+/* TIMELINE — items se deslizan al activar el día */
+.day-content.active .timeline-item {
+  animation: slideInLeft .35s ease both;
+}
+.day-content.active .timeline-item:nth-child(1) { animation-delay: .05s; }
+.day-content.active .timeline-item:nth-child(2) { animation-delay: .10s; }
+.day-content.active .timeline-item:nth-child(3) { animation-delay: .15s; }
+.day-content.active .timeline-item:nth-child(4) { animation-delay: .20s; }
+.day-content.active .timeline-item:nth-child(5) { animation-delay: .25s; }
+.day-content.active .timeline-item:nth-child(6) { animation-delay: .30s; }
+.day-content.active .timeline-item:nth-child(7) { animation-delay: .35s; }
+.day-content.active .timeline-item:nth-child(8) { animation-delay: .38s; }
+.day-content.active .timeline-item:nth-child(9) { animation-delay: .40s; }
+.day-content.active .timeline-item:nth-child(10){ animation-delay: .42s; }
+.day-content.active .timeline-item:nth-child(n+11){ animation-delay: .44s; }
+
+/* DAY HEADER — entra desde arriba */
+.day-content.active .day-header {
+  animation: fadeInUp .4s ease both;
+}
+
+/* BOTONES DE DÍA — el activo con pulso dorado suave */
+.day-btn {
+  transition: background .2s, border-color .2s, color .2s, transform .15s;
+}
+.day-btn:active { transform: scale(.93); }
+.day-btn.active {
+  animation: goldPulse 2s 1s ease infinite;
+}
+
+/* NAV — subrayado animado */
+.nav-btn {
+  position: relative;
+  transition: color .2s;
+}
+.nav-btn::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: var(--gold);
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .25s ease;
+}
+.nav-btn.active::after { transform: scaleX(1); }
+
+/* CHECKLIST — tick con rebote */
+.check-item {
+  transition: opacity .25s, background .15s;
+}
+.check-item .ci-box {
+  transition: background .15s, border-color .15s;
+}
+.check-item.just-checked .ci-box {
+  animation: checkBounce .4s ease;
+}
+
+/* WEATHER ICON — flotación suave */
+.ww-icon {
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+/* FOTO CARDS — aparecen con fade */
+.photo-card {
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.photo-card:hover {
+  transform: scale(1.04);
+  box-shadow: 0 6px 20px rgba(0,0,0,.15);
+}
+.photo-card img { animation: fadeIn .4s ease both; }
+
+/* MOCHILA CARDS hover */
+.mochila-card {
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.mochila-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.10); }
+
+/* ALTERNATIVAS — suave entrada al abrir details */
+.day-alternatives[open] .alt-list {
+  animation: fadeInUp .3s ease both;
+}
+
+/* TL-TIP — entrada al abrir */
+.tl-tip[open] .tl-tip-body {
+  animation: fadeInUp .25s ease both;
+}
+
+/* PAYMENT CARDS hover */
+.payment-card {
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.payment-card:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.10); }
+
+/* GUIDE BLOCKS hover */
+.guide-block {
+  transition: box-shadow .2s ease;
+}
+.guide-block:hover { box-shadow: 0 4px 16px rgba(0,0,0,.10); }
+
+/* SELECTOR DE DÍAS scroll suave */
+.day-selector { scroll-behavior: smooth; }
+
+/* PROGRESS BAR animada */
+.progress-fill { transition: width .5s cubic-bezier(.4,0,.2,1); }
+
+/* HERO PILLS — flota levemente cada píldora */
+.hero-pills .pill {
+  transition: transform .2s, background .2s;
+}
+.hero-pills .pill:hover {
+  transform: translateY(-2px);
+  background: rgba(255,255,255,.22);
+}
+
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"/>
@@ -2325,7 +2504,13 @@ function showSection(id, btn) {
 function showDay(n) {
   document.querySelectorAll('.day-content').forEach(d => d.classList.remove('active'));
   document.querySelectorAll('.day-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('day-' + n).classList.add('active');
+  const dc = document.getElementById('day-' + n);
+  if (dc) {
+    // Forzar re-trigger de animaciones CSS
+    dc.classList.remove('active');
+    void dc.offsetWidth;
+    dc.classList.add('active');
+  }
   document.querySelectorAll('.day-btn')[n-1].classList.add('active');
 }
 
@@ -2340,6 +2525,10 @@ function toggleCheck(id) {
   box.style.background = isDone ? 'var(--green)' : '';
   box.style.borderColor = isDone ? 'var(--green)' : '';
   box.style.color = isDone ? 'white' : '';
+  if (isDone) {
+    item.classList.add('just-checked');
+    setTimeout(() => item.classList.remove('just-checked'), 500);
+  }
   localStorage.setItem('check_' + id, isDone ? '1' : '0');
 }
 
